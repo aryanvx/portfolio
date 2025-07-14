@@ -6,7 +6,7 @@ You know ya boy had to include a README.md. Otherwise, I'd just be another hypoc
 
 ## Overview
 
-This is my personal portfolio websitwe. I built it as a static site to share my projects, achievements, and information about myself. I used vanilla HTML, CSS, and JavaScript to keep things simple and clean while still following modern web design practices.
+This is my personal portfolio website. I built it as a static site to share my projects, achievements, and information about myself. I used vanilla HTML, CSS, and JavaScript to keep things simple and clean while still following modern web design practices.
 
 ## User Preferences
 
@@ -42,7 +42,7 @@ My portfolio follows your average static website architecture:
 - CSS reset for consistent cross-browser rendering
 - Custom CSS properties for easier styling updates
 - Uses modern CSS techniques like flexbox and grid
-- Smooth scrolling for better user experience
+- Smooth scrolling for a better user experience
 
 ## Data Flow
 
