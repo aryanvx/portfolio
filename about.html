@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="About Aryan Vyahalkar - Student, Programmer, Innovator. Learn more about my background and interests."
+        />
+        <meta
+            name="keywords"
+            content="Aryan Vyahalkar, about, background, student, programmer"
+        />
+        <meta name="author" content="Aryan Vyahalkar" />
+        <br></br>
+        <title>About | Aryan Vyahalkar</title>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+
+        <link rel="stylesheet" href="style.css" />
+
+        <style>
+            /* Smooth scrolling because we left jumping around in 2005 */
+            html {
+                scroll-behavior: smooth;
+            }
+
+            /* Fix: Make navbar fixed and add padding to content */
+            .navbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+            }
+
+            /* Adjust padding-top equal to navbar height */
+            .page-content {
+                padding-top: 60px; /* Adjust this if your navbar height is different */
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html">Aryan Vyahalkar</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="projects.html" class="nav-link">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link active">About</a>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <button
+                        class="theme-toggle"
+                        id="theme-toggle"
+                        aria-label="Toggle dark mode"
+                    >
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- About Section -->
+        <main id="about" class="page-content">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="about-info">
+                            <h2>Aryan Vyahalkar</h2>
+                            <p class="role">Student & Developer</p>
+                            <div class="social-links">
+                                <a
+                                    href="mailto:aryan.x.vyahalkar@gmail.com"
+                                    class="social-link"
+                                    title="Email"
+                                >
+                                    <i class="fas fa-envelope"></i>
+                                    <span>mail</span>
+                                </a>
+                                <a
+                                    href="https://github.com/aryanvx"
+                                    class="social-link"
+                                    title="GitHub"
+                                >
+                                    <i class="fab fa-github"></i>
+                                    <span>github</span>
+                                </a>
+                                <a
+                                    href="https://linkedin.com/in/aryanxvyahalkar"
+                                    class="social-link"
+                                    title="LinkedIn"
+                                >
+                                    <i class="fab fa-linkedin"></i>
+                                    <span>linkedin</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <h1>About Me</h1>
+                        <div class="about-description">
+                            <p>
+                                Hello! My name is Aryan Vyahalkar and welcome to my website. This'll serve as my current portfolio as well.
+                            </p>
+                            <p>
+                                I'll be adding passion projects, stuff on my soapbox, blogs, and pretty much any deep idea that'll come to me in the shower.
+                            </p>
+                            <p>
+                                When I'm not doing something computer-related, you can find me reading thrillers, playing literally any sport, or watching the Fast and Furious movies.
+                            </p>
+                            <p>
+                                Right now, I'm open to any sort of prospects that involve web development, python programming, bioinformatics, hating on Patrick Mahomes, or even if you have an idea that nobody else wants to hear.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section added below About -->
+                <section id="contact" class="contact" style="margin-top: 5rem;">
+                    <h2>Contact Me</h2>
+                    <p>
+                        I'm always down to hear from you! Send me a message using the form below or reach out via email or social media.
+                    </p>
+
+                    <form class="contact-form" novalidate>
+                        <div>
+                            <label for="name">Name</label><br />
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                placeholder="Your name"
+                            />
+                        </div>
+                        <div>
+                            <label for="email">Email</label><br />
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                placeholder="your.email@example.com"
+                            />
+                        </div>
+                        <div>
+                            <label for="subject">Subject</label><br />
+                            <input
+                                type="text"
+                                id="subject"
+                                name="subject"
+                                placeholder="Subject (optional)"
+                            />
+                        </div>
+                        <div>
+                            <label for="message">Message</label><br />
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                required
+                                placeholder="Write your message here..."
+                            ></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="margin-top: 1rem;">
+                            Send Message
+                        </button>
+                    </form>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2025 Aryan Vyahalkar. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script src="script.js"></script>
+        <script>
+            // Grab that theme toggle button—time to toggle some vibes (bruh mb for the cringe)
+            const themeToggle = document.getElementById('theme-toggle');
+
+            // On page load, check if user already prefers dark mode and set it up
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                // Switch icon to sun cause dark mode is on
+                themeToggle.querySelector('i').className = 'fas fa-sun';
+            }
+
+            // When you click the button, flip the theme and icon
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+
+                // Swap icon to match the new theme
+                const icon = themeToggle.querySelector('i');
+                if (newTheme === 'dark') {
+                    icon.className = 'fas fa-sun';
+                } else {
+                    icon.className = 'fas fa-moon';
+                }
+
+                // Remember the user’s vibe for next visit
+                localStorage.setItem('theme', newTheme);
+            });
+        </script>
+    </body>
+</html>
