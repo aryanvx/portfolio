@@ -1,790 +1,230 @@
-/* Reset and Base Styles — starting fresh, no margin or padding surprises */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Root variables for light theme — colors and vibes */
-:root {
-    /* Light theme variables */
-    --bg-color: #ffffff;
-    --text-color: #1a1a1a;
-    --text-secondary: #4a4a4a;
-    --text-muted: #6a6a6a;
-    --border-color: rgba(0, 0, 0, 0.1);
-    --card-bg: #fafafa;
-    --card-border: #f0f0f0;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --accent-color: #1a1a1a;
-    --hover-bg: #f0f0f0;
-}
-
-/* Dark mode variables override — night vibes activated */
-body.dark-mode {
-    --bg-color: #0d1117;
-    --text-color: #c9d1d9;
-    --text-secondary: #8b949e;
-    --text-muted: #6e7681;
-    --border-color: rgba(110, 118, 129, 0.3);
-    --card-bg: #161b22;
-    --card-border: #30363d;
-    --shadow: rgba(0, 0, 0, 0.8);
-    --accent-color: #58a6ff;
-    --hover-bg: #21262d;
-}
-
-/* Smooth scrolling baked right into the browser */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Base body styles — font, size, colors, and line height for comfy reading */
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    font-size: 16px;
-}
-
-/* Central container max width and horizontal padding for neat layouts */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Typography basics — setting font styles for headings and paragraphs */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lora', serif;
-    font-weight: 600;
-    line-height: 1.3;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-}
-
-/* Heading sizes, boldness, and spacing for hierarchy clarity */
-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-}
-
-h3 {
-    font-size: 1.5rem;
-}
-
-/* Paragraph styling — comfortable spacing and secondary text color */
-p {
-    margin-bottom: 1rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
-
-/* Links look clean with smooth color transition on hover */
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s ease;
-}
-
-/* Navigation bar styling — fixed on top with translucent background and blur for that modern feel */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-/* Dark theme tweaks for navbar background and borders */
-[data-theme='dark'] .navbar {
-    background-color: rgba(13, 17, 23, 0.95);
-    border-bottom-color: var(--border-color);
-}
-
-/* Navbar background brightens a bit on scroll — keeps it fresh and readable */
-.navbar.scrolled {
-    background-color: rgba(255, 255, 255, 0.98);
-}
-
-[data-theme='dark'] .navbar.scrolled {
-    background-color: rgba(13, 17, 23, 0.98);
-}
-
-/* Nav container flexbox — space between logo and menu, aligned center */
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-}
-
-/* Logo styling — serif font for some personality */
-.nav-logo a {
-    font-family: 'Lora', serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-color);
-}
-
-/* Nav actions container — aligns theme toggle button and hamburger menu nicely */
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-/* Theme toggle button — clean, no background or border */
-.theme-toggle {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-}
-
-/* Color change on hover for theme toggle — subtle feedback */
-.theme-toggle:hover {
-    color: var(--accent-color);
-}
-
-/* Nav menu — horizontal flex with spacing */
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-/* Nav links — lighter color, decent padding */
-.nav-link {
-    color: var(--text-secondary);
-    font-weight: 500;
-    position: relative;
-    padding: 0.5rem 0;
-}
-
-/* On hover, nav links get darker for clarity */
-.nav-link:hover {
-    color: var(--text-color);
-}
-
-/* Active nav link styling for current page highlight */
-.nav-link.active {
-    color: var(--text-color);
-}
-
-/* Underline effect animation on hover for nav links */
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--text-color);
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-/* Mobile hamburger menu styling — hidden by default, flex column on small screens */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-/* Hamburger bars styling — size, spacing, and transition for animation */
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color);
-    margin: 3px 0;
-    transition: 0.3s;
-}
-
-/* Hero section — full viewport height, centered content, padding for fixed navbar */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top: 70px;
-}
-
-/* Content container in hero — max width for readability */
-.hero-content {
-    max-width: 600px;
-}
-
-/* Hero title — big and bold */
-.hero-title {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-}
-
-/* Tagline with muted color and lighter weight */
-.hero-tagline {
-    font-size: 1.3rem;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    font-weight: 400;
-}
-
-/* Call to action button container margin */
-.hero-cta {
-    margin-top: 2rem;
-}
-
-/* Primary button style — bold background and smooth hover */
-.btn-primary {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: var(--accent-color);
-    color: white;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: none;
-}
-
-/* Button hover effect — lighter blue and slight lift */
-.btn-primary:hover {
-      background-color: #3ea6ff;
-    transform: translateY(-2px);
-}
-
-/* About section basics — padding and card background */
-.about {
-    padding: 80px 0;
-    background-color: var(--card-bg);
-}
-
-/* Grid layout for about content — image and text side by side */
-.about-content {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 4rem;
-    align-items: start;
-}
-
-/* Center avatar placeholder */
-.about-image {
-    text-align: center;
-}
-
-/* Avatar placeholder styling — circle with subtle gradient and shadow */
-.avatar-placeholder {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 2rem;
-    border: 4px solid var(--bg-color);
-    box-shadow: 0 10px 30px var(--shadow);
-    transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-/* Dark mode avatar placeholder tweaks for color and shadow */
-[data-theme='dark'] .avatar-placeholder {
-    background: linear-gradient(135deg, #21262d 0%, #161b22 100%);
-    border-color: var(--card-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-}
-
-/* Icon inside avatar placeholder — big and grey */
-.avatar-placeholder i {
-    font-size: 4rem;
-    color: #9a9a9a;
-    transition: color 0.3s ease;
-}
-
-/* Dark mode icon color */
-[data-theme='dark'] .avatar-placeholder i {
-    color: #6e7681;
-}
-
-/* About info heading style */
-.about-info h3 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
-}
-
-/* Role text — muted and sized nicely */
-.role {
-    color: var(--text-muted);
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-}
-
-/* Social links container — flex and gap */
-.social-links {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-/* Each social link — flex with icon and text, padded and rounded */
-.social-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    padding: 0.5rem;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-}
-
-/* Social link hover effect — color and background highlight */
-.social-link:hover {
-    color: var(--accent-color);
-    background-color: var(--hover-bg);
-}
-
-/* Icon size inside social link */
-.social-link i {
-    font-size: 1.1rem;
-}
-
-/* About section main heading */
-.about-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--text-color);
-}
-
-/* Paragraphs inside about description — bigger font and more spacing */
-.about-description p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-}
-
-/* Projects section padding */
-.projects {
-    padding: 80px 0;
-}
-
-/* Projects section heading */
-.projects h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    color: var(--text-color);
-}
-
-/* Projects grid layout — responsive columns with gap */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-/* Individual project card styling — background, padding, border radius, shadow */
-.project-card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 0 10px var(--shadow);
-}
-
-/* Project card hover — lift and shadow deepen */
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px var(--shadow);
-}
-
-/* Project card heading color */
-.project-content h3 {
-    margin-bottom: 1rem;
-    color: var(--text-color);
-}
-
-/* Contact section padding and background */
-.contact {
-    padding: 80px 0;
-    background-color: var(--card-bg);
-    text-align: center;
-}
-
-/* Contact section heading */
-.contact h2 {
-    margin-bottom: 2rem;
-    color: var(--text-color);
-}
-
-/* Contact content container — max width and centered */
-.contact-content {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* Paragraph inside contact content */
-.contact-content p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    color: var(--text-secondary);
-}
-
-/* Contact methods container — flex, wrap and gap */
-.contact-methods {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-/* Each contact method — flex with icon and text, padded, rounded, and bordered */
-.contact-method {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 1.5rem;
-    background: var(--bg-color);
-    border-radius: 8px;
-    color: var(--text-secondary);
-    transition: all 0.3s ease;
-    border: 1px solid var(--card-border);
-}
-
-/* Contact method hover — accent color and lift */
-.contact-method:hover {
-    color: var(--accent-color);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px var(--shadow);
-}
-
-/* Icon inside contact method */
-.contact-method i {
-    font-size: 1.2rem;
-}
-
-/* Footer background and text color inverted for contrast */
-.footer {
-    background-color: var(--text-color);
-    color: var(--bg-color);
-    text-align: center;
-    padding: 2rem 0;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Footer paragraph color */
-.footer p {
-    color: var(--bg-color);
-    margin: 0;
-}
-
-/* Responsive Design — adapting for smaller screens */
-@media screen and (max-width: 768px) {
-    /* Show hamburger on mobile */
-    .hamburger {
-        display: flex;
+// Hey! This class handles switching between light and dark mode—gotta keep it comfy for your eyeballs.
+class ThemeManager {
+    constructor() {
+        this.themeToggle = document.getElementById('theme-toggle');
+        // Check if user already picked a theme before, otherwise default to light.
+        this.currentTheme = localStorage.getItem('theme') || 'light';
+        this.init();
     }
 
-    /* Mobile nav menu — hidden by default, slides in */
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: var(--bg-color);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding: 2rem 0;
-        gap: 1rem;
+    init() {
+        // Set the theme right away based on saved preference
+        this.setTheme(this.currentTheme);
+        // When you click the button, toggle that theme up/down
+        this.themeToggle.addEventListener('click', () => this.toggleTheme());
     }
 
-    /* When active, mobile menu slides in */
-    .nav-menu.active {
-        left: 0;
+    setTheme(theme) {
+        // Dark mode means dark body bg, else light vibes
+        if (theme === 'dark') {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+
+        // Swap the little icon between sun and moon to match the mood
+        const icon = this.themeToggle.querySelector('i');
+
+        if (theme === 'dark') {
+            icon.className = 'fas fa-sun';
+            this.themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            icon.className = 'fas fa-moon';
+            this.themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+
+        // Remember what user picked for next time they visit
+        localStorage.setItem('theme', theme);
+        this.currentTheme = theme;
     }
 
-    /* Hamburger animation for cross */
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    /* Smaller hero title on mobile */
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    /* Smaller hero tagline on mobile */
-    .hero-tagline {
-        font-size: 1.1rem;
-    }
-
-    /* About content stacked vertically on mobile */
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        text-align: center;
-    }
-
-    /* Smaller avatar */
-    .avatar-placeholder {
-        width: 150px;
-        height: 150px;
-    }
-
-    /* Smaller icon inside avatar */
-    .avatar-placeholder i {
-        font-size: 3rem;
-    }
-
-    /* Center social links */
-    .social-links {
-        justify-content: center;
-    }
-
-    /* Contact methods stacked on mobile */
-    .contact-methods {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* Contact method width and alignment on mobile */
-    .contact-method {
-        width: 100%;
-        max-width: 250px;
-        justify-content: center;
-    }
-
-    /* Smaller main headings */
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    /* Narrower container padding on mobile */
-    .container {
-        padding: 0 15px;
+    toggleTheme() {
+        // Flip it to the opposite vibe, light or dark, simple as that
+        const newTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+        this.setTheme(newTheme);
     }
 }
 
-/* Extra small screens tweaks */
-@media screen and (max-width: 480px) {
-    /* Hero title smaller */
-    .hero-title {
-        font-size: 2rem;
+// This dude controls the hamburger menu—because mobile users should get love too.
+class MobileMenu {
+    constructor() {
+        this.hamburger = document.querySelector('.hamburger');
+        this.navMenu = document.querySelector('.nav-menu');
+        this.init();
     }
 
-    /* Hero tagline smaller */
-    .hero-tagline {
-        font-size: 1rem;
+    init() {
+        if (this.hamburger && this.navMenu) {
+            // Click the burger to open/close menu
+            this.hamburger.addEventListener('click', () => this.toggleMenu());
+            // Clicking any nav link closes the menu—nice and neat
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => this.closeMenu());
+            });
+            // If you click outside the menu or burger, it closes—cuz duh.
+            document.addEventListener('click', (e) => {
+                if (!this.hamburger.contains(e.target) && !this.navMenu.contains(e.target)) {
+                    this.closeMenu();
+                }
+            });
+        }
     }
 
-    /* About text heading smaller */
-    .about-text h2 {
-        font-size: 2rem;
+    toggleMenu() {
+        // Add or remove active class so menu slides in/out smoothly
+        this.hamburger.classList.toggle('active');
+        this.navMenu.classList.toggle('active');
     }
 
-    /* Even smaller avatar */
-    .avatar-placeholder {
-        width: 120px;
-        height: 120px;
-    }
-
-    /* Smaller avatar icon */
-    .avatar-placeholder i {
-        font-size: 2.5rem;
-    }
-}
-
-/* Accessibility: Reduce motion for users who prefer it */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-    
-    html {
-        scroll-behavior: auto;
+    closeMenu() {
+        // Close menu, remove active styling
+        this.hamburger.classList.remove('active');
+        this.navMenu.classList.remove('active');
     }
 }
 
-/* Keyboard focus styles — clear outline for accessibility */
-a:focus,
-button:focus {
-    outline: 2px solid var(--text-color);
-    outline-offset: 2px;
-}
-
-/* Print styles — clean print without nav and adjusted text */
-@media print {
-    .navbar,
-    .hamburger {
-        display: none;
+// Smooth scrolling for when you click anchor links because once again—we left jumping around in 2005
+class SmoothScroll {
+    constructor() {
+        this.init();
     }
-    
-    .hero {
-        padding-top: 0;
-        min-height: auto;
+
+    init() {
+        // For all anchor links starting with #
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault(); // No abrupt jumps
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    // Smoothly glide to that section
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     }
-    
-      body {
-        font-size: 12pt;
-        line-height: 1.4;
+}
+
+// Navbar gets a little shadow or color change once you scroll down—looks sick imo
+class NavbarScroll {
+    constructor() {
+        this.navbar = document.querySelector('.navbar');
+        this.init();
+    }
+
+    init() {
+        if (this.navbar) {
+            window.addEventListener('scroll', () => this.handleScroll());
+        }
+    }
+
+    handleScroll() {
+        if (window.scrollY > 50) {
+            this.navbar.classList.add('scrolled');
+        } else {
+            this.navbar.classList.remove('scrolled');
+        }
     }
 }
 
-/* Light mode navbar text */
-.navbar,
-.nav-logo a,
-.nav-link {
-    color: var(--text-secondary);
+// Handles the contact form submission, making sure you get a friendly lil confirmation
+class ContactForm {
+    constructor() {
+        this.form = document.querySelector('.contact-form');
+        this.init();
+    }
+
+    init() {
+        if (this.form) {
+            this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        }
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        // Grab data from the form fields
+        const formData = new FormData(this.form);
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            subject: formData.get('subject'),
+            message: formData.get('message')
+        };
+        // Pretend to send it off—real backend coming soon maybe? 🤞
+        this.showMessage('Thank you for your message! I\'ll get back to you soon.', 'success');
+        // Clear the form so you can send another message if you want
+        this.form.reset();
+    }
+
+    showMessage(message, type) {
+        // If there’s already a message, ditch it so we don’t spam the page
+        const existingMessage = document.querySelector('.form-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+        // Make a new message div, style it, and pop it right after the form
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `form-message ${type}`;
+        messageDiv.textContent = message;
+        this.form.insertAdjacentElement('afterend', messageDiv);
+        // Message disappears after 5 seconds—don’t worry, you’ll see it first
+        setTimeout(() => {
+            messageDiv.remove();
+        }, 5000);
+    }
 }
 
-.nav-link:hover,
-.nav-link.active,
-.nav-logo a:hover {
-    color: var(--text-color);
+// This handles cool animations when stuff scrolls into view—because subtle is better than boring
+class ScrollAnimations {
+    constructor() {
+        this.observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        this.init();
+    }
+
+    init() {
+        if ('IntersectionObserver' in window) {
+            this.observer = new IntersectionObserver(
+                (entries) => this.handleIntersection(entries),
+                this.observerOptions
+            );
+            // Watch these elements so they animate nicely when visible
+            document.querySelectorAll('.project-card, .contact-method, .skill-category').forEach(el => {
+                this.observer.observe(el);
+            });
+        }
+    }
+
+    handleIntersection(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add animation class and then stop watching it—done and done
+                entry.target.classList.add('animate-in');
+                this.observer.unobserve(entry.target);
+            }
+        });
+    }
 }
 
-/* When navbar scrolled (still light bg) */
-.navbar.scrolled {
-    background-color: rgba(255, 255, 255, 0.98);
-    color: var(--text-color);
-}
+// When the page loads, kick off all these little managers to keep things smooth
+document.addEventListener('DOMContentLoaded', () => {
+    new ThemeManager();
+    new MobileMenu();
+    new SmoothScroll();
+    new NavbarScroll();
+    new ContactForm();
+    new ScrollAnimations();
+});
 
-.navbar.scrolled .nav-logo a,
-.navbar.scrolled .nav-link {
-    color: var(--text-color);
-}
-
-/* Dark mode */
-body.dark-mode .navbar {
-    background-color: #1e1e1e;
-}
-
-body.dark-mode .nav-logo a,
-body.dark-mode .nav-link {
-    color: #f5f5f5;
-}
-
-body.dark-mode .nav-link:hover,
-body.dark-mode .nav-link.active,
-body.dark-mode .nav-logo a:hover {
-    color: #58a6ff; /* or your accent color */
-}
-
-/* ===== DARK MODE GLOBAL STYLES ===== */
-/* Bonus dark mode overrides for more elements */
-/* bruh ts css alone took like 65% of the time it took to finish the website */
-/* ik ts css is not that hard but i was just lazy to do it */
-
-body.dark-mode {
-    background-color: #121212;
-    color: #f5f5f5;
-}
-
-body.dark-mode * {
-    color: inherit; /* Use inherited color to maintain consistency */
-}
-
-/* Override link colors in dark mode */
-body.dark-mode a {
-    color: var(--accent-color);
-}
-
-body.dark-mode a:hover,
-body.dark-mode a:focus {
-    color: #79b8ff;
-}
-
-/* Override button styles in dark mode */
-body.dark-mode .btn-primary {
-    background-color: var(--accent-color);
-    color: #fff;
-}
-
-body.dark-mode .btn-primary:hover {
-    background-color: #79b8ff;
-    transform: translateY(-2px);
-}
-
-/* Navbar text color in dark mode */
-body.dark-mode .navbar,
-body.dark-mode .nav-logo a,
-body.dark-mode .nav-link {
-    color: #c9d1d9;
-}
-
-body.dark-mode .nav-link:hover,
-body.dark-mode .nav-link.active,
-body.dark-mode .nav-logo a:hover {
-    color: var(--accent-color);
-}
-
-/* Hamburger bars color in dark mode */
-body.dark-mode .bar {
-    background-color: #c9d1d9;
-}
-
-/* Footer in dark mode */
-body.dark-mode .footer {
-    background-color: #21262d;
-    color: #c9d1d9;
-}
-
-/* Card backgrounds and borders in dark mode */
-body.dark-mode .project-card,
-body.dark-mode .contact-method,
-body.dark-mode .about {
-    background-color: var(--card-bg);
-    border-color: var(--card-border);
-    box-shadow: 0 0 10px var(--shadow);
-}
-
-/* Scrollbar styling for dark mode (optional) */
-body.dark-mode ::-webkit-scrollbar {
-    width: 10px;
-}
-
-body.dark-mode ::-webkit-scrollbar-track {
-    background: #161b22;
-}
-
-body.dark-mode ::-webkit-scrollbar-thumb {
-    background-color: var(--accent-color);
-    border-radius: 10px;
-    border: 2px solid #161b22;
-}
+// Just a placeholder if you want to do something when user switches tabs or hides page
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        // Page is hidden now—you could pause stuff here if you want
+    } else {
+        // Page is visible again—resume stuff if needed
+    }
+});
