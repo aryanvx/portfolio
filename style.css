@@ -341,7 +341,7 @@ a {
 /* Social links container — flex and gap */
 .social-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 10px rem;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -350,7 +350,7 @@ a {
 .social-link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 5px;
     color: var(--text-secondary);
     padding: 0.5rem;
     border-radius: 6px;
@@ -774,7 +774,7 @@ body.dark-mode .about {
     box-shadow: 0 0 10px var(--shadow);
 }
 
-/* Scrollbar styling for dark mode (optional) */
+/* Scrollbar styling for dark mode */
 body.dark-mode ::-webkit-scrollbar {
     width: 10px;
 }
@@ -787,4 +787,14 @@ body.dark-mode ::-webkit-scrollbar-thumb {
     background-color: var(--accent-color);
     border-radius: 10px;
     border: 2px solid #161b22;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
