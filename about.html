@@ -217,34 +217,5 @@
         </footer>
 
         <script src="script.js"></script>
-        <script>
-            // Grab that theme toggle button—time to toggle some vibes (bruh mb for the cringe)
-            const themeToggle = document.getElementById('theme-toggle');
-
-            // On page load, check if user already prefers dark mode and set it up
-            if (localStorage.getItem('theme') === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                // Switch icon to sun cause dark mode is on
-                themeToggle.querySelector('i').className = 'fas fa-sun';
-            }
-
-            // When you click the button, flip the theme and icon
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = document.documentElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                document.documentElement.setAttribute('data-theme', newTheme);
-
-                // Swap icon to match the new theme
-                const icon = themeToggle.querySelector('i');
-                if (newTheme === 'dark') {
-                    icon.className = 'fas fa-sun';
-                } else {
-                    icon.className = 'fas fa-moon';
-                }
-
-                // Remember the user’s vibe for next visit
-                localStorage.setItem('theme', newTheme);
-            });
-        </script>
     </body>
 </html>
