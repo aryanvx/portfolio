@@ -244,29 +244,30 @@
                 }
             });
 
-            // Dark mode toggle
-            const themeToggle = document.getElementById('theme-toggle');
-            const icon = themeToggle.querySelector('i');
+            document.addEventListener('DOMContentLoaded', () => {
+                const themeToggle = document.getElementById('theme-toggle');
+                const icon = themeToggle.querySelector('i');
             
-            // On page load: set icon based on stored theme
-            if (localStorage.getItem('theme') === 'dark') {
-                document.body.classList.add('dark-mode');
-                icon.className = 'fas fa-sun'; // Sun for dark mode
-            } else {
-                icon.className = 'fas fa-moon'; // Moon for light mode
-            }
-            
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                if (document.body.classList.contains('dark-mode')) {
-                    localStorage.setItem('theme', 'dark');
-                    icon.className = 'fas fa-sun'; // switch to sun icon
-                    themeToggle.setAttribute('aria-label', 'Switch to light mode');
+                // On page load: set icon based on stored theme
+                if (localStorage.getItem('theme') === 'dark') {
+                    document.body.classList.add('dark-mode');
+                    icon.className = 'fas fa-sun'; // Sun for dark mode
                 } else {
-                    localStorage.setItem('theme', 'light');
-                    icon.className = 'fas fa-moon'; // switch to moon icon
-                    themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+                    icon.className = 'fas fa-moon'; // Moon for light mode
                 }
+            
+                themeToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('dark-mode');
+                    if (document.body.classList.contains('dark-mode')) {
+                        localStorage.setItem('theme', 'dark');
+                        icon.className = 'fas fa-sun'; // switch to sun icon
+                        themeToggle.setAttribute('aria-label', 'Switch to light mode');
+                    } else {
+                        localStorage.setItem('theme', 'light');
+                        icon.className = 'fas fa-moon'; // switch to moon icon
+                        themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+                    }
+                });
             });
         </script>
     </body>
