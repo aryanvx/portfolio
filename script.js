@@ -107,28 +107,6 @@ class SmoothScroll {
     }
 }
 
-// Navbar gets a little shadow or color change once you scroll down—looks sick imo
-class NavbarScroll {
-    constructor() {
-        this.navbar = document.querySelector('.navbar');
-        this.init();
-    }
-
-    init() {
-        if (this.navbar) {
-            window.addEventListener('scroll', () => this.handleScroll());
-        }
-    }
-
-    handleScroll() {
-        if (window.scrollY > 50) {
-            this.navbar.classList.add('scrolled');
-        } else {
-            this.navbar.classList.remove('scrolled');
-        }
-    }
-}
-
 // Handles the contact form submission, making sure you get a friendly lil confirmation
 class ContactForm {
     constructor() {
