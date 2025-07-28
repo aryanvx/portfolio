@@ -5,11 +5,9 @@ You know ya boy had to include a README.md. Otherwise, I'd just be another hypoc
 # Portfolio Website
 
 ## Overview
-
-This is my personal portfolio website. I built it as a static site to share my projects, achievements, and information about myself. I used vanilla HTML, CSS, and JavaScript to keep things simple and clean while still following modern web design practices.
+This is my personal portfolio website. I built it as a static site to share my projects, achievements, and information about myself. I used vanilla HTML, CSS, and JavaScript to keep things simple and clean while still attemtping to follow modern web design practices.
 
 ## User Preferences
-
 Mostly used simple, everyday language.
 
 ## System Architecture
@@ -22,7 +20,6 @@ My portfolio follows your average static website architecture:
 - **Responsive Design**: Mobile-first approach with hamburger menu implementation
 
 # Note
-
 - The about button on the navigation bar will not work if already on the homepage
 - Because, scrolling down or clicking on the "learn more about me" will perform the action
 
@@ -36,7 +33,7 @@ My portfolio follows your average static website architecture:
 ### Typography System
 - Primary font: Inter (sans-serif) for body text and UI elements
 - Secondary font: Lora (serif) for headings and emphasis
-- Font weights range from 300 to 700 for visual hierarchy
+- Font weights range from 300 to 700 for the visual hierarchy
 
 ### Layout Structure
 - Container-based layout with max-width of 1200px
@@ -50,7 +47,6 @@ My portfolio follows your average static website architecture:
 - Smooth scrolling for a better user experience
 
 ## Data Flow
-
 Since this is a static website:
 - No server-side data processing
 - All content is embedded in the HTML files
@@ -71,6 +67,7 @@ Since this is a static website:
 - All frontend implementation
 - No database whatsoever
 - No server-side processing either
+- May change (so stay tuned for some cool updates)
 
 ## Deployment Strategy
 
@@ -88,5 +85,3 @@ Since this is a static website:
 - Includes meta tags for description, keywords, and author
 - Semantic HTML structure to improve search engine crawling
 - Viewport meta tag for mobile optimization
-
-Overall, I kept the architecture simple, reliable, and easy to maintain while making sure it still looks professional for my personal portfolio website.
