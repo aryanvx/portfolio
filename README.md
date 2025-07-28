@@ -10,7 +10,7 @@ This is my personal portfolio website. I built it as a static site to share my p
 
 ## User Preferences
 
-Mostly just used simple, everyday language.
+Mostly used simple, everyday language.
 
 ## System Architecture
 
@@ -20,6 +20,11 @@ My portfolio follows your average static website architecture:
 - **Structure**: Single-page application (SPA) with navigation between sections
 - **Styling**: Custom CSS with external font dependencies
 - **Responsive Design**: Mobile-first approach with hamburger menu implementation
+
+# Note
+
+- The about button on the navigation bar will not work if already on the homepage
+- Because, scrolling down or clicking on the "learn more about me" will perform the action
 
 ## Key Components
 
