@@ -67,13 +67,13 @@ Since this is a static website:
 ### No Backend Dependencies
 - All frontend implementation
 - No database whatsoever
-- No server-side processing either
+- No server-side processing
 - May change (so stay tuned for some cool lil updates)
 
 ## Deployment Strategy
 
 ### Static Hosting Compatible
-- Can be deployed on any static hosting service (Netlify, Vercel, GitHub Pages)
+- Can be deployed on any static hosting service (Netlify, Vercel, GitHub Pages, etc.)
 - Doesn’t need any server or build process
 - Simple file upload to deploy
 
