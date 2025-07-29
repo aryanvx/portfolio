@@ -48,7 +48,7 @@ My portfolio follows your average static website architecture:
 - Smooth scrolling for a better user experience
 
 ## Data Flow
-Since this is a static website:
+Because this is a static website:
 - No server-side data processing
 - All content is embedded in the HTML files
 - Navigation links trigger scroll-to-section actions
@@ -65,7 +65,7 @@ Since this is a static website:
 - Provides scalable vector icons for social media and UI
 
 ### No Backend Dependencies
-- All frontend implementation
+- Solely frontend implementation
 - No database whatsoever
 - No server-side processing
 - May change (so stay tuned for some cool lil updates)
