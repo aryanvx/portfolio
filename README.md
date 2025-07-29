@@ -1,6 +1,7 @@
 # Header
 
 You know ya boy had to include a README.md. Otherwise, I'd just be another hypocrite in a world full of hypocrisy.
+(If you caught that reference you're elite)
 
 # Portfolio Website
 
@@ -67,7 +68,7 @@ Since this is a static website:
 - All frontend implementation
 - No database whatsoever
 - No server-side processing either
-- May change (so stay tuned for some cool updates)
+- May change (so stay tuned for some cool lil updates)
 
 ## Deployment Strategy
 
