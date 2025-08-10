@@ -1,13 +1,10 @@
-/* Reset and Base Styles — starting fresh, no margin or padding surprises */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Root variables for light theme — colors and vibes */
 :root {
-    /* Light theme variables */
     --bg-color: #ffffff;
     --text-color: #1a1a1a;
     --text-secondary: #4a4a4a;
@@ -20,7 +17,6 @@
     --hover-bg: #f0f0f0;
 }
 
-/* Dark mode variables override — night vibes activated */
 body.dark-mode {
     --bg-color: #0d1117;
     --text-color: #c9d1d9;
@@ -34,12 +30,10 @@ body.dark-mode {
     --hover-bg: #21262d;
 }
 
-/* Smooth scrolling baked right into the browser */
 html {
     scroll-behavior: smooth;
 }
 
-/* Base body styles — font, size, colors, and line height for comfy reading */
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
@@ -48,14 +42,12 @@ body {
     font-size: 16px;
 }
 
-/* Central container max width and horizontal padding for neat layouts */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Typography basics — setting font styles for headings and paragraphs */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Lora', serif;
     font-weight: 600;
@@ -64,7 +56,6 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-color);
 }
 
-/* Heading sizes, boldness, and spacing for hierarchy clarity */
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -79,21 +70,18 @@ h3 {
     font-size: 1.5rem;
 }
 
-/* Paragraph styling — comfortable spacing and secondary text color */
 p {
     margin-bottom: 1rem;
     color: var(--text-secondary);
     line-height: 1.7;
 }
 
-/* Links look clean with smooth color transition on hover */
 a {
     text-decoration: none;
     color: inherit;
     transition: all 0.3s ease;
 }
 
-/* Navigation bar styling — fixed on top with translucent background and blur for that modern feel */
 .navbar {
     position: fixed;
     top: 0;
@@ -106,13 +94,11 @@ a {
     transition: all 0.3s ease;
 }
 
-/* Dark theme tweaks for navbar background and borders */
 [data-theme='dark'] .navbar {
     background-color: rgba(13, 17, 23, 0.95);
     border-bottom-color: var(--border-color);
 }
 
-/* Navbar background brightens a bit on scroll — keeps it fresh and readable */
 .navbar.scrolled {
     background-color: rgba(255, 255, 255, 0.98);
 }
@@ -121,7 +107,6 @@ a {
     background-color: rgba(13, 17, 23, 0.98);
 }
 
-/* Nav container flexbox — space between logo and menu, aligned center */
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -132,7 +117,6 @@ a {
     height: 70px;
 }
 
-/* Logo styling — serif font for some personality */
 .nav-logo a {
     font-family: 'Lora', serif;
     font-size: 1.2rem;
@@ -140,14 +124,12 @@ a {
     color: var(--text-color);
 }
 
-/* Nav actions container — aligns theme toggle button and hamburger menu nicely */
 .nav-actions {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-/* Theme toggle button — clean, no background or border */
 .theme-toggle {
     background: none;
     border: none;
@@ -155,19 +137,16 @@ a {
     cursor: pointer;
 }
 
-/* Color change on hover for theme toggle — subtle feedback */
 .theme-toggle:hover {
     color: var(--accent-color);
 }
 
-/* Nav menu — horizontal flex with spacing */
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 2rem;
 }
 
-/* Nav links — lighter color, decent padding */
 .nav-link {
     color: var(--text-secondary);
     font-weight: 500;
@@ -175,17 +154,14 @@ a {
     padding: 0.5rem 0;
 }
 
-/* On hover, nav links get darker for clarity */
 .nav-link:hover {
     color: var(--text-color);
 }
 
-/* Active nav link styling for current page highlight */
 .nav-link.active {
     color: var(--text-color);
 }
 
-/* Underline effect animation on hover for nav links */
 .nav-link::after {
     content: '';
     position: absolute;
@@ -201,14 +177,12 @@ a {
     width: 100%;
 }
 
-/* Mobile hamburger menu styling — hidden by default, flex column on small screens */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
 }
 
-/* Hamburger bars styling — size, spacing, and transition for animation */
 .bar {
     width: 25px;
     height: 3px;
@@ -217,7 +191,6 @@ a {
     transition: 0.3s;
 }
 
-/* Hero section — full viewport height, centered content, padding for fixed navbar */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -227,19 +200,16 @@ a {
     padding-top: 70px;
 }
 
-/* Content container in hero — max width for readability */
 .hero-content {
     max-width: 600px;
 }
 
-/* Hero title — big and bold */
 .hero-title {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     color: var(--text-color);
 }
 
-/* Tagline with muted color and lighter weight */
 .hero-tagline {
     font-size: 1.3rem;
     color: var(--text-muted);
@@ -247,12 +217,10 @@ a {
     font-weight: 400;
 }
 
-/* Call to action button container margin */
 .hero-cta {
     margin-top: 2rem;
 }
 
-/* Primary button style — bold background and smooth hover */
 .btn-primary {
     display: inline-block;
     padding: 12px 30px;
@@ -264,19 +232,16 @@ a {
     border: none;
 }
 
-/* Button hover effect — lighter blue and slight lift */
 .btn-primary:hover {
       background-color: #3ea6ff;
     transform: translateY(-2px);
 }
 
-/* About section basics — padding and card background */
 .about {
     padding: 80px 0;
     background-color: var(--card-bg);
 }
 
-/* Grid layout for about content — image and text side by side */
 .about-content {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -284,12 +249,10 @@ a {
     align-items: start;
 }
 
-/* Center avatar placeholder */
 .about-image {
     text-align: center;
 }
 
-/* Avatar placeholder styling — circle with subtle gradient and shadow */
 .avatar-placeholder {
     width: 200px;
     height: 200px;
@@ -304,33 +267,28 @@ a {
     transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-/* Dark mode avatar placeholder tweaks for color and shadow */
 [data-theme='dark'] .avatar-placeholder {
     background: linear-gradient(135deg, #21262d 0%, #161b22 100%);
     border-color: var(--card-border);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
-/* Icon inside avatar placeholder — big and grey */
 .avatar-placeholder i {
     font-size: 4rem;
     color: #9a9a9a;
     transition: color 0.3s ease;
 }
 
-/* Dark mode icon color */
 [data-theme='dark'] .avatar-placeholder i {
     color: #6e7681;
 }
 
-/* About info heading style */
 .about-info h3 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
     color: var(--text-color);
 }
 
-/* Role text — muted and sized nicely */
 .role {
     color: var(--text-muted);
     font-weight: 500;
@@ -338,7 +296,6 @@ a {
     font-size: 1.1rem;
 }
 
-/* Social links container — flex and gap */
 .social-links {
     display: flex;
     gap: 10px rem;
@@ -346,7 +303,6 @@ a {
     flex-wrap: wrap;
 }
 
-/* Each social link — flex with icon and text, padded and rounded */
 .social-link {
     display: flex;
     align-items: center;
@@ -357,51 +313,43 @@ a {
     transition: all 0.3s ease;
 }
 
-/* Social link hover effect — color and background highlight */
 .social-link:hover {
     color: var(--accent-color);
     background-color: var(--hover-bg);
 }
 
-/* Icon size inside social link */
 .social-link i {
     font-size: 1.1rem;
 }
 
-/* About section main heading */
 .about-text h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
     color: var(--text-color);
 }
 
-/* Paragraphs inside about description — bigger font and more spacing */
 .about-description p {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
 }
 
-/* Projects section padding */
 .projects {
     padding: 80px 0;
 }
 
-/* Projects section heading */
 .projects h2 {
     text-align: center;
     margin-bottom: 3rem;
     color: var(--text-color);
 }
 
-/* Projects grid layout — responsive columns with gap */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
-/* Individual project card styling — background, padding, border radius, shadow */
 .project-card {
     background: var(--card-bg);
     border-radius: 12px;
@@ -412,45 +360,38 @@ a {
     box-shadow: 0 0 10px var(--shadow);
 }
 
-/* Project card hover — lift and shadow deepen */
 .project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px var(--shadow);
 }
 
-/* Project card heading color */
 .project-content h3 {
     margin-bottom: 1rem;
     color: var(--text-color);
 }
 
-/* Contact section padding and background */
 .contact {
     padding: 80px 0;
     background-color: var(--card-bg);
     text-align: center;
 }
 
-/* Contact section heading */
 .contact h2 {
     margin-bottom: 2rem;
     color: var(--text-color);
 }
 
-/* Contact content container — max width and centered */
 .contact-content {
     max-width: 600px;
     margin: 0 auto;
 }
 
-/* Paragraph inside contact content */
 .contact-content p {
     font-size: 1.1rem;
     margin-bottom: 2rem;
     color: var(--text-secondary);
 }
 
-/* Contact methods container — flex, wrap and gap */
 .contact-methods {
     display: flex;
     justify-content: center;
@@ -458,7 +399,6 @@ a {
     flex-wrap: wrap;
 }
 
-/* Each contact method — flex with icon and text, padded, rounded, and bordered */
 .contact-method {
     display: flex;
     align-items: center;
@@ -471,19 +411,16 @@ a {
     border: 1px solid var(--card-border);
 }
 
-/* Contact method hover — accent color and lift */
 .contact-method:hover {
     color: var(--accent-color);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px var(--shadow);
 }
 
-/* Icon inside contact method */
 .contact-method i {
     font-size: 1.2rem;
 }
 
-/* Footer background and text color inverted for contrast */
 .footer {
     background-color: var(--text-color);
     color: var(--bg-color);
@@ -492,20 +429,16 @@ a {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Footer paragraph color */
 .footer p {
     color: var(--bg-color);
     margin: 0;
 }
 
-/* Responsive Design — adapting for smaller screens */
 @media screen and (max-width: 768px) {
-    /* Show hamburger on mobile */
     .hamburger {
         display: flex;
     }
 
-    /* Mobile nav menu — hidden by default, slides in */
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -520,12 +453,10 @@ a {
         gap: 1rem;
     }
 
-    /* When active, mobile menu slides in */
     .nav-menu.active {
         left: 0;
     }
 
-    /* Hamburger animation for cross */
     .hamburger.active .bar:nth-child(2) {
         opacity: 0;
     }
@@ -538,53 +469,44 @@ a {
         transform: translateY(-8px) rotate(-45deg);
     }
 
-    /* Smaller hero title on mobile */
     .hero-title {
         font-size: 2.5rem;
     }
 
-    /* Smaller hero tagline on mobile */
     .hero-tagline {
         font-size: 1.1rem;
     }
 
-    /* About content stacked vertically on mobile */
     .about-content {
         grid-template-columns: 1fr;
         gap: 2rem;
         text-align: center;
     }
 
-    /* Smaller avatar */
     .avatar-placeholder {
         width: 150px;
         height: 150px;
     }
 
-    /* Smaller icon inside avatar */
     .avatar-placeholder i {
         font-size: 3rem;
     }
 
-    /* Center social links */
     .social-links {
         justify-content: center;
     }
 
-    /* Contact methods stacked on mobile */
     .contact-methods {
         flex-direction: column;
         align-items: center;
     }
 
-    /* Contact method width and alignment on mobile */
     .contact-method {
         width: 100%;
         max-width: 250px;
         justify-content: center;
     }
 
-    /* Smaller main headings */
     h1 {
         font-size: 2rem;
     }
@@ -593,42 +515,34 @@ a {
         font-size: 1.5rem;
     }
 
-    /* Narrower container padding on mobile */
     .container {
         padding: 0 15px;
     }
 }
 
-/* Extra small screens tweaks */
 @media screen and (max-width: 480px) {
-    /* Hero title smaller */
     .hero-title {
         font-size: 2rem;
     }
 
-    /* Hero tagline smaller */
     .hero-tagline {
         font-size: 1rem;
     }
 
-    /* About text heading smaller */
     .about-text h2 {
         font-size: 2rem;
+        
     }
-
-    /* Even smaller avatar */
     .avatar-placeholder {
         width: 120px;
         height: 120px;
     }
 
-    /* Smaller avatar icon */
     .avatar-placeholder i {
         font-size: 2.5rem;
     }
 }
 
-/* Accessibility: Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
@@ -641,14 +555,12 @@ a {
     }
 }
 
-/* Keyboard focus styles — clear outline for accessibility */
 a:focus,
 button:focus {
     outline: 2px solid var(--text-color);
     outline-offset: 2px;
 }
 
-/* Print styles — clean print without nav and adjusted text */
 @media print {
     .navbar,
     .hamburger {
@@ -666,7 +578,6 @@ button:focus {
     }
 }
 
-/* Light mode navbar text */
 .navbar,
 .nav-logo a,
 .nav-link {
@@ -679,7 +590,6 @@ button:focus {
     color: var(--text-color);
 }
 
-/* When navbar scrolled (still light bg) */
 .navbar.scrolled {
     background-color: rgba(255, 255, 255, 0.98);
     color: var(--text-color);
@@ -690,7 +600,6 @@ button:focus {
     color: var(--text-color);
 }
 
-/* Dark mode */
 body.dark-mode .navbar {
     background-color: #1e1e1e;
 }
@@ -703,13 +612,8 @@ body.dark-mode .nav-link {
 body.dark-mode .nav-link:hover,
 body.dark-mode .nav-link.active,
 body.dark-mode .nav-logo a:hover {
-    color: #58a6ff; /* or your accent color */
+    color: #58a6ff;
 }
-
-/* ===== DARK MODE GLOBAL STYLES ===== */
-/* Bonus dark mode overrides for more elements */
-/* bruh ts css alone took like 65% of the time it took to finish the website */
-/* ik ts css is not that hard but i was just lazy to do it */
 
 body.dark-mode {
     background-color: #121212;
@@ -717,10 +621,9 @@ body.dark-mode {
 }
 
 body.dark-mode * {
-    color: inherit; /* Use inherited color to maintain consistency */
+    color: inherit;
 }
 
-/* Override link colors in dark mode */
 body.dark-mode a {
     color: var(--accent-color);
 }
@@ -730,7 +633,6 @@ body.dark-mode a:focus {
     color: #79b8ff;
 }
 
-/* Override button styles in dark mode */
 body.dark-mode .btn-primary {
     background-color: var(--accent-color);
     color: #fff;
@@ -741,7 +643,6 @@ body.dark-mode .btn-primary:hover {
     transform: translateY(-2px);
 }
 
-/* Navbar text color in dark mode */
 body.dark-mode .navbar,
 body.dark-mode .nav-logo a,
 body.dark-mode .nav-link {
@@ -754,18 +655,15 @@ body.dark-mode .nav-logo a:hover {
     color: var(--accent-color);
 }
 
-/* Hamburger bars color in dark mode */
 body.dark-mode .bar {
     background-color: #c9d1d9;
 }
 
-/* Footer in dark mode */
 body.dark-mode .footer {
     background-color: #21262d;
     color: #c9d1d9;
 }
 
-/* Card backgrounds and borders in dark mode */
 body.dark-mode .project-card,
 body.dark-mode .contact-method,
 body.dark-mode .about {
@@ -774,7 +672,6 @@ body.dark-mode .about {
     box-shadow: 0 0 10px var(--shadow);
 }
 
-/* Scrollbar styling for dark mode */
 body.dark-mode ::-webkit-scrollbar {
     width: 10px;
 }
@@ -799,19 +696,25 @@ body.dark-mode ::-webkit-scrollbar-thumb {
     margin-bottom: 20px;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .page-content {
-    padding-bottom: 60px;
+  flex: 1;
 }
 
 .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--text-color);
-    color: var(--bg-color);
-    text-align: center;
-    padding: 10px 0;
-    box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
 }
