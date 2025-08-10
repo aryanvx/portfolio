@@ -798,3 +798,15 @@ body.dark-mode ::-webkit-scrollbar-thumb {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     margin-bottom: 20px;
 }
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* or whatever background you want */
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0 -1px 5px rgba(0,0,0,0.1); /* optional subtle shadow */
+    z-index: 1000;
+}
