@@ -1,3 +1,7 @@
+.caption-color {
+    color: #7cb2ff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -26,7 +30,7 @@ body.dark-mode {
     --card-bg: #161b22;
     --card-border: #30363d;
     --shadow: rgba(0, 0, 0, 0.8);
-    --accent-color: #58a6ff;
+    --accent-color: #7e2bff;
     --hover-bg: #21262d;
 }
 
@@ -233,7 +237,7 @@ a {
 }
 
 .btn-primary:hover {
-      background-color: #3ea6ff;
+    background-color: #7e2bff;
     transform: translateY(-2px);
 }
 
