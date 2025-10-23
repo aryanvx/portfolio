@@ -1,9 +1,7 @@
 # Header
 
-You know ya boy had to include a README.md. Otherwise, I'd just be another hypocrite in a world full of hypocrisy.
-(If you caught that reference you're elite)
-
-# Portfolio Website
+You know ya boy had to include a README.md. Otherwise, I'd just be another hypocrite in a world full of hypocrisy
+(If you caught that reference you're elite).
 
 ## Overview
 This is my personal portfolio website. I built it as a static site to share my projects, achievements, and information about myself. I used vanilla HTML, CSS, and JavaScript to keep things simple and clean while still attemtping to follow modern web design practices.
@@ -23,8 +21,6 @@ My portfolio follows your average static website architecture:
 # Note
 - The about button on the navigation bar will not work if already on the homepage
 - Because, scrolling down or clicking on the "learn more about me" will perform the action
-
-## Key Components
 
 ### Navigation System
 - Fixed navigation bar with my logo and menu items
@@ -85,4 +81,5 @@ Because this is a static website:
 ### SEO Optimization
 - Includes meta tags for description, keywords, and author
 - Semantic HTML structure to improve search engine crawling
+
 - Viewport meta tag for mobile optimization
