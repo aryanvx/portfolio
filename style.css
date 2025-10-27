@@ -700,6 +700,27 @@ body.dark-mode ::-webkit-scrollbar-thumb {
     margin-bottom: 20px;
 }
 
+.profile-wrapper {
+  width: 300px;
+  height: 300px;
+  max-width: 400px;
+  max-height: 400px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: 3px solid #ccc; /* If you want a border around the circle */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for depth */
+}
+
 html, body {
   height: 100%;
   margin: 0;
