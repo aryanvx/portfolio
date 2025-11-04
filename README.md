@@ -1,8 +1,3 @@
-# Header
-
-You know ya boy had to include a README.md. Otherwise, I'd just be another hypocrite in a world full of hypocrisy
-(If you caught that reference you're elite).
-
 ## Overview
 This is my personal portfolio website. I built it as a static site to share my projects, achievements, and information about myself. I used vanilla HTML, CSS, and JavaScript to keep things simple and clean while still attemtping to follow modern web design practices.
 
