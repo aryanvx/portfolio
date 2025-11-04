@@ -616,7 +616,7 @@ body.dark-mode .nav-link {
 body.dark-mode .nav-link:hover,
 body.dark-mode .nav-link.active,
 body.dark-mode .nav-logo a:hover {
-    color: #58a6ff;
+    color: #fff;
 }
 
 body.dark-mode {
@@ -634,7 +634,7 @@ body.dark-mode a {
 
 body.dark-mode a:hover,
 body.dark-mode a:focus {
-    color: #79b8ff;
+    color: #fff;
 }
 
 body.dark-mode .btn-primary {
@@ -643,7 +643,7 @@ body.dark-mode .btn-primary {
 }
 
 body.dark-mode .btn-primary:hover {
-    background-color: #79b8ff;
+    background-color: #7e2bff;
     transform: translateY(-2px);
 }
 
