@@ -767,8 +767,8 @@ body {
 .about-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 10px; /* optional for a softer look */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* optional shadow */
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .about-image figcaption {
@@ -776,7 +776,7 @@ body {
     color: var(--text-muted);
     font-style: italic;
     margin-top: 0.5rem;
-    text-align: left;   /* ADD THIS LINE */
+    text-align: left;
 }
 
 .about-image figure {
