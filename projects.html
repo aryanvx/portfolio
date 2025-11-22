@@ -83,8 +83,107 @@
             <div class="container">
                 <div class="page-header">
                     <h1>My Projects</h1>
-                    <p>A showcase of stuff I've worked on.</p>
+                    <p>A showcase of notable stuff I've worked on.</p>
+                    <br>
                 </div>
+                <div class="project-card">
+                    <div class="card-header">
+                        <h3 class="blog-title"><i class="fa-solid fa-crosshairs"></i><br>haradaAI</h3>
+                        <span>A goal-planning web application inspired by the Harada Method, the goal-setting framework famously used by MLB star Shohei Ohtani when he was just a high school student. The app transforms any ambitious goal into a structured 9x9 grid containing 8 supporting pillars and 64 actionable tasks, giving users a comprehensive roadmap to achieve their objectives. Implemented client-side routing with React Router and configured Vercel rewrites to handle SPA navigation, resolving 404 errors on direct URL access to shared grids.</span>
+                    </div>
+                    <div class="card-content">
+                        <br>
+                        <div class="project-tech">
+                            <span class="tech-tag"><b>Frontend</b></span> -->
+                            <span class="tech-tag">React |</span>
+                            <span class="tech-tag">TypeScript | </span>
+                            <span class="tech-tag">TailwindCSS |</span>
+                            <span class="tech-tag"> React Router</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag"><b>Backend</b></span> -->
+                            <span class="tech-tag">Supabase (PostgreSQL database + Edge Functions)</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag"><b>AI Tier</b></span> -->
+                            <span class="tech-tag">Groq's Llama 3.3 70B</span>
+                        </div>
+                        <br>
+                        <a href="https://harada-chi.vercel.app/" target="_new"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a> |
+                        <a href="https://github.com/aryanvx/harada" target="_new"><i class="fab fa-github"></i> Source code</a>
+                    </div>
+                </div>
+                <br>
+                <div class="project-card">
+                    <div class="card-header">
+                        <h3 class="blog-title"><i class="fa-solid fa-microphone-lines"></i><br>VoiceCode</h3>
+                        <span>A voice-controlled coding assistant that reimagines how we write code by letting your voice do the heavy lifting instead of the keyboard. Originally inspired by a teacher's suggestion (shoutout Mr. Gardner) to build something for physically impaired coders, it's grown into a full-featured voice-driven code editor. Built a flexible regex-based command parser that recognizes natural language variations for navigation commands, allowing users to say "go to," "navigate to," or "jump to" interchangeably. Implemented a dual-mode system that gives users control over how literally the AI interprets their requests (smart vs. strict mode). Planning to evolve this into a full AI-powered development environment that learns your coding style, explains bugs, and provides real-time feedback on your code.</span>
+                    </div>
+                    <div class="card-content">
+                        <br>
+                        <div class="project-tech">
+                            <span class="tech-tag"><b>Frontend</b></span> -->
+                            <span class="tech-tag">React |</span>
+                            <span class="tech-tag">TypeScript | </span>
+                            <span class="tech-tag">TailwindCSS |</span>
+                            <span class="tech-tag"> Vite</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag"><b>Backend</b></span> -->
+                            <span class="tech-tag">Node.js</span> |
+                            <span class="tech-tag">Express</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag"><b>AI Tiers</b></span> -->
+                            <span class="tech-tag">Groq's Llama 3.3 70B</span> |
+                            <span class="tech-tag">OpenAI's GPT-4o-mini</span>
+                        </div>
+                        <br>
+                        <a href="" target="_new"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo </a> (haven't gotten around to deploying it yet) |
+                        <a href="https://github.com/aryanvx/voice-coder-studio/tree/main" target="_new"><i class="fab fa-github"></i> Source code</a>
+                    </div>
+                </div>
+                <br>
+                <div class="project-card">
+                    <div class="card-header">
+                        <h3 class="blog-title"><i class="fa-solid fa-flag-usa"></i><br>MyNCRep</h3>
+                        <span>A civic-information tool built to help North Carolina voters cut through the noise and get the facts that matter. It shows where to vote, what you need, and what each candidate actually stands for. No spin, no party narratives, just information you can use. Created for the Congressional App Challenge by a team of students who realized most new voters don't lack opinions; they lack context. Overcame missing North Carolina polling data in the Voter Information Project (VIP) by implementing fallback logic. Balanced the tradeoff between API-driven data flow and local storage for performance. Designed location features with user privacy and safety as a priority, and established guidelines to ensure all civic data is presented neutrally and verifiably. Planning to expand beyond North Carolina, add real-time legislative updates, build gamified civics learning modules, integrate AI-powered bill summaries, and partner with election boards for verified polling data.</span>
+                    </div>
+                    <div class="card-content">
+                        <br>
+                        <div class="project-tech">
+                            <span class="tech-tag"><b>Frontend</b></span> -->
+                            <span class="tech-tag">HTML5 |</span>
+                            <span class="tech-tag">CSS3 | </span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag"><b>Backend</b></span> -->
+                            <span class="tech-tag">Python</span> |
+                            <span class="tech-tag">Poetry (dependency management)</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag"><b>APIs</b></span> -->
+                            <span class="tech-tag">Google Civics API</span> |
+                            <span class="tech-tag">Vote Smart</span> |
+                            <span class="tech-tag">NC State Board of Elections (NCSBE)</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag"><b>Mapping + Architecture</b></span> -->
+                            <span class="tech-tag">Leaflet.js</span> |
+                            <span class="tech-tag">OpenStreetMap</span> |
+                            <span class="tech-tag">Modular design for easy contributor extensions</span>
+                        </div>
+                        <br>
+                        <a href="https://aryanvx.pythonanywhere.com/" target="_new"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo </a> |
+                        <a href="https://github.com/EvanY-74/CAC" target="_new"><i class="fab fa-github"></i> Source code</a>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <h3>And some of my smaller projects that I still want to shine a light on:</h3>
+                <br>
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-image">
@@ -135,21 +234,6 @@
                     </div>
                     <div class="project-card">
                         <div class="project-image">
-                            <i class="fa-solid fa-flag-usa"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3>MyNCRep</h3>
-                            <p>A nonpartisan civic engagement app built for North Carolinian voters. It shows who your local candidates are, what they stand for, and how to vote, so you can be confident when you cast your ballot.</p>
-                            <span class="tech-tag">HTML5 |</span>
-                            <span class="tech-tag">CSS3 | </span>
-                            <span class="tech-tag">JavaScript |</span>
-                            <span class="tech-tag">Python3</span>
-                            <a href="https://aryanvx.pythonanywhere.com/" target="_blank"><br><i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo</a> |
-                            <a href="https://github.com/aryanvx/cps-tester" target="_blank"><i class="fab fa-github"></i> Source code</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-image">
                             <i class="fa-solid fa-gamepad"></i>
                         </div>
                         <div class="project-content">
@@ -172,29 +256,9 @@
                             <a href="https://github.com/aryanvx/wordle" target="_blank"><i class="fab fa-github"></i> Source code</a>
                         </div>
                     </div>
-                    <div class="project-card" style="position: relative;">
-                        <!-- Shelved Overlay -->
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; z-index: 10; border-radius: inherit;">
-                            <span style="font-size: 2.5rem; font-weight: 700; color: #ffffff; letter-spacing: 0.1em; transform: rotate(-15deg); opacity: 0.9;">work in progress; early access on github</span>
-                        </div>
-                        
-                        <!-- Original Content -->
-                        <div class="project-image">
-                            <i class="fa-solid fa-microphone"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3>Voice Coder Studio</h3>
-                            <p>A voice-controlled coding setup that lets you write and edit code by talking to it. Goal was a civic engagement app to help the physically impaired. React-based web application built with TailwindCSS.</p>
-                            <span class="tech-tag">HTML5 |</span>
-                            <span class="tech-tag">CSS3 |</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">Miscellaneous</span>
-                            <br>
-                            <a href="https://github.com/aryanvx/voice-coder-studio" target="_blank"><i class="fab fa-github"></i> Source code</a>
-                        </div>
-                    </div>
                 </div>
             </div>
+            <br>
             <br>
         </main>
 
