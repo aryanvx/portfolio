@@ -112,7 +112,7 @@
                 <div class="about-image">
                     <figure>
                         <img src="assets/id.jpeg" alt="Aryan Vyahalkar portrait" class="about-photo" />
-                        <figcaption style="text-align: center;"><em>The lion doesn't concern himself with the opinions of sheep.</em></figcaption>
+                        <figcaption style="text-align: center; font-size: 17px;"><em>The lion doesn't concern himself with the opinions of sheep.</em></figcaption>
                     </figure>
                 </div>
             </div>
@@ -160,9 +160,7 @@
                 <p>&copy; 2025 Aryan Vyahalkar. All rights reserved.</p>
             </div>
         </footer>
-
         <script>
-            // Mobile menu toggle because menus should open and close like that.
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
 
@@ -177,8 +175,6 @@
                     navMenu.classList.remove('active');
                 })
             );
-
-            // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -191,8 +187,6 @@
                     }
                 });
             });
-
-            // Navbar shadow on scroll
             window.addEventListener('scroll', () => {
                 const navbar = document.querySelector('.navbar');
                 if (window.scrollY > 50) {
@@ -201,35 +195,31 @@
                     navbar.classList.remove('scrolled');
                 }
             });
-
             document.addEventListener('DOMContentLoaded', () => {
                 const themeToggle = document.getElementById('theme-toggle');
                 const icon = themeToggle.querySelector('i');
-            
-                // On page load: set icon based on stored theme
                 if (localStorage.getItem('theme') === 'dark') {
                     document.body.classList.add('dark-mode');
-                    icon.className = 'fas fa-sun'; // Sun for dark mode
+                    icon.className = 'fas fa-sun';
                 } else {
-                    icon.className = 'fas fa-moon'; // Moon for light mode
+                    icon.className = 'fas fa-moon';
                 }
             
                 themeToggle.addEventListener('click', () => {
                     document.body.classList.toggle('dark-mode');
                     if (document.body.classList.contains('dark-mode')) {
                         localStorage.setItem('theme', 'dark');
-                        icon.className = 'fas fa-sun'; // switch to sun icon
+                        icon.className = 'fas fa-sun';
                         themeToggle.setAttribute('aria-label', 'Switch to light mode');
                     } else {
                         localStorage.setItem('theme', 'light');
-                        icon.className = 'fas fa-moon'; // switch to moon icon
+                        icon.className = 'fas fa-moon';
                         themeToggle.setAttribute('aria-label', 'Switch to dark mode');
                     }
                 });
             });
         </script>
         <script>
-        // PixelBlast - Vanilla JS Implementation
         class PixelBlast {
         constructor(container, options = {}) {
             this.container = container;
@@ -255,11 +245,9 @@
         }
 
         init() {
-            // Create canvas
             const canvas = document.createElement('canvas');
             this.canvas = canvas;
             
-            // Create renderer
             this.renderer = new THREE.WebGLRenderer({
             canvas: canvas,
             antialias: true,
@@ -276,11 +264,9 @@
             this.renderer.setClearColor(0x000000, 1);
             }
 
-            // Setup scene
             this.scene = new THREE.Scene();
             this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
             
-            // Create uniforms
             this.uniforms = {
             uResolution: { value: new THREE.Vector2(0, 0) },
             uTime: { value: 0 },
@@ -301,7 +287,6 @@
             uEdgeFade: { value: this.options.edgeFade }
             };
 
-            // Create material with shaders
             this.material = new THREE.ShaderMaterial({
             vertexShader: this.getVertexShader(),
             fragmentShader: this.getFragmentShader(),
@@ -311,23 +296,18 @@
             depthWrite: false
             });
 
-            // Create quad
             const quadGeom = new THREE.PlaneGeometry(2, 2);
             this.quad = new THREE.Mesh(quadGeom, this.material);
             this.scene.add(this.quad);
 
-            // Setup clock
             this.clock = new THREE.Clock();
             this.timeOffset = Math.random() * 1000;
 
-            // Handle resize
             this.handleResize();
             window.addEventListener('resize', () => this.handleResize());
 
-            // Handle interactions
             this.canvas.addEventListener('pointerdown', (e) => this.handlePointerDown(e));
 
-            // Start animation
             this.animate();
         }
 
@@ -534,23 +514,18 @@
         }
         }
 
-        // Initialize PixelBlast on page load
         document.addEventListener('DOMContentLoaded', function() {
         const heroSection = document.querySelector('.hero');
         if (!heroSection) return;
 
-        // Create container for PixelBlast
         const pixelBlastContainer = document.createElement('div');
         pixelBlastContainer.className = 'pixel-blast-container';
         
-        // Insert at the beginning of hero section
         heroSection.insertBefore(pixelBlastContainer, heroSection.firstChild);
 
-        // Get theme-appropriate color
         const isDarkMode = document.body.classList.contains('dark-mode');
         const color = isDarkMode ? '#7e2bff' : '#1a1a1a';
 
-        // Initialize PixelBlast
         const pixelBlast = new PixelBlast(pixelBlastContainer, {
             variant: 'circle',
             pixelSize: 6,
@@ -567,7 +542,6 @@
             transparent: true
         });
 
-        // Update color when theme changes
         const themeToggle = document.querySelector('.theme-toggle');
         if (themeToggle) {
             themeToggle.addEventListener('click', function() {
@@ -579,12 +553,10 @@
             });
         }
 
-        // Store reference for cleanup if needed
         window.pixelBlastInstance = pixelBlast;
         });
         </script>
         <script>
-            // DecryptedText - Vanilla JS Implementation
             class DecryptedText {
             constructor(element, options = {}) {
                 this.element = element;
@@ -792,7 +764,7 @@
             }
 
             stopAnimation() {
-                if (this.options.animateOn === 'view') return; // Don't stop on view animations
+                if (this.options.animateOn === 'view') return;
                 
                 this.isHovering = false;
                 this.completeAnimation();
@@ -805,12 +777,9 @@
                 }
                 
                 this.isAnimating = false;
-                
-                // Reset if not hovering (except for view animations)
                 if (!this.isHovering && this.options.animateOn !== 'view') {
                 this.revealedIndices.clear();
                 } else {
-                // Fill all indices as revealed
                 for (let i = 0; i < this.originalText.length; i++) {
                     this.revealedIndices.add(i);
                 }
@@ -826,23 +795,20 @@
             }
             }
 
-            // Initialize DecryptedText on your name
             document.addEventListener('DOMContentLoaded', function() {
             const heroTitle = document.querySelector('.hero-title');
             
             if (heroTitle) {
-                // Add class to indicate it has decrypt animation
                 heroTitle.classList.add('has-decrypt');
                 
-                // Initialize the animation
                 const decryptedText = new DecryptedText(heroTitle, {
-                speed: 100,                   // Speed of animation (ms per iteration)
-                maxIterations: 12,            // How many times to scramble (for non-sequential)
+                speed: 150,                   // Speed of animation (ms per iteration)
+                maxIterations: 20,            // How many times to scramble (for non-sequential)
                 sequential: true,             // Reveal one character at a time
                 revealDirection: 'start',     // 'start', 'end', or 'center'
                 useOriginalCharsOnly: false,  // Use random chars or only chars from your name
                 characters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+',
-                animateOn: 'view',            // 'hover', 'view', or 'both'
+                animateOn: 'both',            // 'hover', 'view', or 'both'
                 encryptedClass: 'encrypted-char',
                 revealedClass: 'revealed-char'
                 });
