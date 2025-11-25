@@ -980,3 +980,37 @@ body.dark-mode .hero-content {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+.text-type__content {
+  display: inline;
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+  animation: cursor-blink 0.5s infinite alternate;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}
+
+@keyframes cursor-blink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Optional: Different colors for cycling text */
+.text-type--color-0 { color: var(--text-color); }
+.text-type--color-1 { color: var(--accent-color); }
+.text-type--color-2 { color: #7cb2ff; }
