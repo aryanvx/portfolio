@@ -93,10 +93,9 @@ class SmoothScroll {
         // For all anchor links starting with #
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
-                e.preventDefault(); // No abrupt jumps
+                e.preventDefault();
                 const target = document.querySelector(anchor.getAttribute('href'));
                 if (target) {
-                    // Smoothly glide to that section
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
@@ -107,7 +106,6 @@ class SmoothScroll {
     }
 }
 
-// Handles the contact form submission, making sure you get a friendly lil confirmation
 class ContactForm {
     constructor() {
         this.form = document.querySelector('.contact-form');
@@ -122,7 +120,6 @@ class ContactForm {
 
     handleSubmit(e) {
         e.preventDefault();
-        // Grab data from the form fields
         const formData = new FormData(this.form);
         const data = {
             name: formData.get('name'),
@@ -132,29 +129,24 @@ class ContactForm {
         };
         // Pretend to send it off—real backend coming soon maybe? 🤞
         this.showMessage('Thank you for your message! I\'ll get back to you soon.', 'success');
-        // Clear the form so you can send another message if you want
         this.form.reset();
     }
 
     showMessage(message, type) {
-        // If there’s already a message, ditch it so we don’t spam the page
         const existingMessage = document.querySelector('.form-message');
         if (existingMessage) {
             existingMessage.remove();
         }
-        // Make a new message div, style it, and pop it right after the form
         const messageDiv = document.createElement('div');
         messageDiv.className = `form-message ${type}`;
         messageDiv.textContent = message;
         this.form.insertAdjacentElement('afterend', messageDiv);
-        // Message disappears after 5 seconds—don’t worry, you’ll see it first
         setTimeout(() => {
             messageDiv.remove();
         }, 5000);
     }
 }
 
-// This handles cool animations when stuff scrolls into view—because subtle is better than boring
 class ScrollAnimations {
     constructor() {
         this.observerOptions = {
@@ -170,7 +162,6 @@ class ScrollAnimations {
                 (entries) => this.handleIntersection(entries),
                 this.observerOptions
             );
-            // Watch these elements so they animate nicely when visible
             document.querySelectorAll('.project-card, .contact-method, .skill-category').forEach(el => {
                 this.observer.observe(el);
             });
@@ -180,7 +171,6 @@ class ScrollAnimations {
     handleIntersection(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Add animation class and then stop watching it—done and done
                 entry.target.classList.add('animate-in');
                 this.observer.unobserve(entry.target);
             }
@@ -188,7 +178,6 @@ class ScrollAnimations {
     }
 }
 
-// When the page loads, kick off all these little managers to keep things smooth
 document.addEventListener('DOMContentLoaded', () => {
     new ThemeManager();
     new MobileMenu();
@@ -198,12 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
     new ScrollAnimations();
 });
 
-// Just a placeholder if you want to do something when user switches tabs or hides page
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-        // Page is hidden now—you could pause stuff here if you want
     } else {
-        // Page is visible again—resume stuff if needed
     }
 });
 
@@ -219,34 +205,26 @@ class ElectricBorder {
   }
 
   init() {
-    // Wrap the card content
     const content = this.element.innerHTML;
     this.element.innerHTML = '';
     
-    // Create SVG
     const svg = this.createSVG();
     this.element.appendChild(svg);
     
-    // Create layers
     const layers = this.createLayers();
     this.element.appendChild(layers);
     
-    // Create content wrapper
     const contentDiv = document.createElement('div');
     contentDiv.className = 'eb-content';
     contentDiv.innerHTML = content;
     this.element.appendChild(contentDiv);
     
-    // Add wrapper class
     this.element.classList.add('electric-border-wrapper');
     
-    // Set CSS variables
     this.element.style.setProperty('--eb-border-width', `${this.thickness}px`);
     
-    // Update animation
     this.updateAnimation();
     
-    // Handle resize
     const resizeObserver = new ResizeObserver(() => this.updateAnimation());
     resizeObserver.observe(this.element);
   }
@@ -395,20 +373,17 @@ class ElectricBorder {
     if (dxAnims[0]) dxAnims[0].setAttribute('values', `${width}; 0`);
     if (dxAnims[1]) dxAnims[1].setAttribute('values', `0; -${width}`);
     
-    // Restart animations
     animates.forEach(a => {
       try {
         a.beginElement();
       } catch (e) {
-        // Browser doesn't support beginElement
+
       }
     });
   }
 }
 
-// Initialize electric borders on page load
 document.addEventListener('DOMContentLoaded', function() {
-  // Apply to all project cards
   document.querySelectorAll('.project-card').forEach(card => {
     card.dataset.speed = '1';
     card.dataset.chaos = '0.5';
@@ -416,7 +391,6 @@ document.addEventListener('DOMContentLoaded', function() {
     new ElectricBorder(card);
   });
   
-  // Apply to all blog cards (if you have them)
   document.querySelectorAll('.blog-card').forEach(card => {
     card.dataset.speed = '1';
     card.dataset.chaos = '0.5';
