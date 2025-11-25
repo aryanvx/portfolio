@@ -583,5 +583,274 @@
         window.pixelBlastInstance = pixelBlast;
         });
         </script>
+        <script>
+            // DecryptedText - Vanilla JS Implementation
+            class DecryptedText {
+            constructor(element, options = {}) {
+                this.element = element;
+                this.originalText = element.textContent;
+                
+                this.options = {
+                speed: options.speed || 50,
+                maxIterations: options.maxIterations || 10,
+                sequential: options.sequential !== undefined ? options.sequential : false,
+                revealDirection: options.revealDirection || 'start', // 'start', 'end', 'center'
+                useOriginalCharsOnly: options.useOriginalCharsOnly || false,
+                characters: options.characters || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+',
+                animateOn: options.animateOn || 'view', // 'hover', 'view', 'both'
+                encryptedClass: options.encryptedClass || 'encrypted-char',
+                revealedClass: options.revealedClass || 'revealed-char'
+                };
+
+                this.isAnimating = false;
+                this.isHovering = false;
+                this.revealedIndices = new Set();
+                this.hasAnimated = false;
+                this.interval = null;
+                this.currentIteration = 0;
+
+                this.init();
+            }
+
+            init() {
+                // Wrap element
+                this.element.classList.add('decrypted-text-wrapper');
+                
+                // Clear existing content
+                this.element.innerHTML = '';
+                
+                // Create accessible text
+                this.createAccessibleText();
+                
+                // Create display text
+                this.displayContainer = document.createElement('span');
+                this.displayContainer.setAttribute('aria-hidden', 'true');
+                this.element.appendChild(this.displayContainer);
+                
+                this.updateDisplay(this.originalText);
+
+                // Set up event listeners
+                if (this.options.animateOn === 'hover' || this.options.animateOn === 'both') {
+                this.element.addEventListener('mouseenter', () => this.startAnimation());
+                this.element.addEventListener('mouseleave', () => this.stopAnimation());
+                }
+
+                if (this.options.animateOn === 'view' || this.options.animateOn === 'both') {
+                this.setupIntersectionObserver();
+                }
+            }
+
+            createAccessibleText() {
+                const srText = document.createElement('span');
+                srText.className = 'sr-only';
+                srText.textContent = this.originalText;
+                this.element.appendChild(srText);
+            }
+
+            setupIntersectionObserver() {
+                const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                    if (entry.isIntersecting && !this.hasAnimated) {
+                        this.startAnimation();
+                        this.hasAnimated = true;
+                    }
+                    });
+                },
+                {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                }
+                );
+
+                observer.observe(this.element);
+            }
+
+            getAvailableChars() {
+                if (this.options.useOriginalCharsOnly) {
+                return Array.from(new Set(this.originalText.split(''))).filter(char => char !== ' ');
+                }
+                return this.options.characters.split('');
+            }
+
+            getNextIndex(revealedSet) {
+                const textLength = this.originalText.length;
+                
+                switch (this.options.revealDirection) {
+                case 'start':
+                    return revealedSet.size;
+                
+                case 'end':
+                    return textLength - 1 - revealedSet.size;
+                
+                case 'center': {
+                    const middle = Math.floor(textLength / 2);
+                    const offset = Math.floor(revealedSet.size / 2);
+                    const nextIndex = revealedSet.size % 2 === 0 
+                    ? middle + offset 
+                    : middle - offset - 1;
+
+                    if (nextIndex >= 0 && nextIndex < textLength && !revealedSet.has(nextIndex)) {
+                    return nextIndex;
+                    }
+
+                    for (let i = 0; i < textLength; i++) {
+                    if (!revealedSet.has(i)) return i;
+                    }
+                    return 0;
+                }
+                
+                default:
+                    return revealedSet.size;
+                }
+            }
+
+            shuffleText(currentRevealed) {
+                const availableChars = this.getAvailableChars();
+                
+                if (this.options.useOriginalCharsOnly) {
+                const positions = this.originalText.split('').map((char, i) => ({
+                    char,
+                    isSpace: char === ' ',
+                    index: i,
+                    isRevealed: currentRevealed.has(i)
+                }));
+
+                const nonSpaceChars = positions
+                    .filter(p => !p.isSpace && !p.isRevealed)
+                    .map(p => p.char);
+
+                // Fisher-Yates shuffle
+                for (let i = nonSpaceChars.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [nonSpaceChars[i], nonSpaceChars[j]] = [nonSpaceChars[j], nonSpaceChars[i]];
+                }
+
+                let charIndex = 0;
+                return positions.map(p => {
+                    if (p.isSpace) return ' ';
+                    if (p.isRevealed) return this.originalText[p.index];
+                    return nonSpaceChars[charIndex++];
+                }).join('');
+                } else {
+                return this.originalText.split('').map((char, i) => {
+                    if (char === ' ') return ' ';
+                    if (currentRevealed.has(i)) return this.originalText[i];
+                    return availableChars[Math.floor(Math.random() * availableChars.length)];
+                }).join('');
+                }
+            }
+
+            updateDisplay(text) {
+                this.displayContainer.innerHTML = '';
+                
+                text.split('').forEach((char, index) => {
+                const span = document.createElement('span');
+                span.className = 'decrypted-text-char';
+                span.textContent = char;
+                
+                const isRevealed = this.revealedIndices.has(index) || !this.isAnimating;
+                
+                if (isRevealed) {
+                    span.classList.add(this.options.revealedClass);
+                } else {
+                    span.classList.add(this.options.encryptedClass);
+                }
+                
+                this.displayContainer.appendChild(span);
+                });
+            }
+
+            startAnimation() {
+                if (this.isAnimating) return;
+                
+                this.isAnimating = true;
+                this.isHovering = true;
+                this.currentIteration = 0;
+                
+                this.interval = setInterval(() => {
+                if (this.options.sequential) {
+                    if (this.revealedIndices.size < this.originalText.length) {
+                    const nextIndex = this.getNextIndex(this.revealedIndices);
+                    this.revealedIndices.add(nextIndex);
+                    const newText = this.shuffleText(this.revealedIndices);
+                    this.updateDisplay(newText);
+                    } else {
+                    this.completeAnimation();
+                    }
+                } else {
+                    const newText = this.shuffleText(this.revealedIndices);
+                    this.updateDisplay(newText);
+                    this.currentIteration++;
+                    
+                    if (this.currentIteration >= this.options.maxIterations) {
+                    this.completeAnimation();
+                    }
+                }
+                }, this.options.speed);
+            }
+
+            stopAnimation() {
+                if (this.options.animateOn === 'view') return; // Don't stop on view animations
+                
+                this.isHovering = false;
+                this.completeAnimation();
+            }
+
+            completeAnimation() {
+                if (this.interval) {
+                clearInterval(this.interval);
+                this.interval = null;
+                }
+                
+                this.isAnimating = false;
+                
+                // Reset if not hovering (except for view animations)
+                if (!this.isHovering && this.options.animateOn !== 'view') {
+                this.revealedIndices.clear();
+                } else {
+                // Fill all indices as revealed
+                for (let i = 0; i < this.originalText.length; i++) {
+                    this.revealedIndices.add(i);
+                }
+                }
+                
+                this.updateDisplay(this.originalText);
+            }
+
+            destroy() {
+                if (this.interval) {
+                clearInterval(this.interval);
+                }
+            }
+            }
+
+            // Initialize DecryptedText on your name
+            document.addEventListener('DOMContentLoaded', function() {
+            const heroTitle = document.querySelector('.hero-title');
+            
+            if (heroTitle) {
+                // Add class to indicate it has decrypt animation
+                heroTitle.classList.add('has-decrypt');
+                
+                // Initialize the animation
+                const decryptedText = new DecryptedText(heroTitle, {
+                speed: 50,                    // Speed of animation (ms per iteration)
+                maxIterations: 12,            // How many times to scramble (for non-sequential)
+                sequential: true,             // Reveal one character at a time
+                revealDirection: 'start',     // 'start', 'end', or 'center'
+                useOriginalCharsOnly: false,  // Use random chars or only chars from your name
+                characters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+',
+                animateOn: 'view',            // 'hover', 'view', or 'both'
+                encryptedClass: 'encrypted-char',
+                revealedClass: 'revealed-char'
+                });
+
+                // Store reference for cleanup if needed
+                window.decryptedTextInstance = decryptedText;
+            }
+            });
+            </script>
     </body>
 </html>
