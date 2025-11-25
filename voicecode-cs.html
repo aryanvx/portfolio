@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/png" href="assets/aryanlogo.png" />
+        <meta name="description" content="Personal blogs and reflections by Aryan Vyahalkar." />
+        <meta name="keywords" content="blog, Aryan Vyahalkar, thoughts, student, developer" />
+        <meta name="author" content="Aryan Vyahalkar" />
+        <title>VoiceCode Case Study</title>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
+
+        <!-- Font Awesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+        <!-- Main stylesheet -->
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html">Aryan Vyahalkar</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="blogs.html" class="nav-link">Blogs</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Title Section -->
+        <main class="container">
+            <section>
+                <h1>
+                    <br>
+                    <br>
+                    VoiceCode Case Study
+                </h1>
+            </section>
+            <section>
+                <h4>
+                    Before I start, I do want to say that this is a project I have a soft spot for. It was born out of a genuine desire to help someone I didn’t even know, and that sense of purpose carried me through the toughest parts of building it. So if you read this and feel a bit of that same warmth, well, that’s probably why.
+                </h4>
+                <br>
+                <hr>
+                <br>
+                <p>
+                    There are assignments you complete, and there are assignments that stay with you long after you’ve submitted them. VoiceCode began as the latter, though at the time I didn’t know it. It arrived unannounced, the way that most meaningful things often do, a bonus task assigned by a professor, after I’d finished my work early. He told me to check the privatized assignment only after watching me help a classmate, as if he had been waiting for the right moment to ask something more of me.
+                    <br>
+                    <br>
+                    The instructions were quite brief and it left a lot of creative ideas on the table: “Build a web app that can help physically impaired programmers.” But, the story behind it was not. His 12-year-old niece, already drawn to computers, had lost one of her hands in a car accident. She wanted to keep learning, and he wanted to give her a chance.
+                    <br>
+                    <br>
+                    And like that, the assignment stopped being an assignment.
+                    <br>
+                    <br>
+                    I began building VoiceCode a week before I flew to India, working in the hotel room and even on the plane. Now this was past the fact that there was a deadline. This assignment wasn't even mandatory, yet I was compelled by this sense of obligation that I couldn't quite explain.
+                    <br>
+                <h3>
+                    Context
+                </h3>
+                <p>
+                    VoiceCode started as an answer to a very simple question: How do you help someone code when the physical act of typing has been taken from them?
+                    <br>
+                    <br>
+                    I definitely didn't have a straightforward answer.
+                    <br>
+                    <br>
+                    But I could try to build a bridge.
+                    <br>
+                    <br>
+                    The core idea was a voice-controlled IDE (later turned into a text-editor). Something that could transform spoken natural language into working code, navigate files, jump between lines, and open documents without needing two hands, or even one. The reason it was a text-editor and not a full-fledged IDE was because it wasn’t meant to be perfect; it was meant to be possible.
+                <h3>
+                    Approach
+                </h3>
+                <p>
+                    The interface came first: a clean, unobtrusive environment built in React, TypeScript, TailwindCSS, and Vite. The backend was built in Node.js and Express.
+                    <br>
+                    <br>
+                    Voice recognition alone wouldn't be enough, because normal people speak in intent, not syntax trees. So VoiceCode leaned on two tiers of AI: Groq’s Llama 3.3 70B and OpenAI’s GPT-4o-mini, for NLP, taking it and transforming it into code. A sprawling set of regex patterns acted as the scaffolding beneath the system, catching edge cases and preventing mistakes from compounding.
+                    <br>
+                    <br>
+                    The user could say things like:
+                    <br>
+                    - “Open file utils.js.”
+                    <br>
+                    - “Go to line thirty-four.”
+                    <br>
+                    - “Create a function called merge arrays.”
+                    <br>
+                    <br>
+                    And VoiceCode would obey, not with the theatrical flourish of a novelty tool, but with the dignity of something built for real-world use.
+                </p>
+                <h3>
+                    Challenges
+                </h3>
+                <p>
+                    The first challenge was faith: not in the user, but in the model. Speech is messy (that's actually an understatement lol). Intent is ambiguous. And people, especially when flustered, rarely speak in this linear, well-formed pattern that machines love. I learned very quickly that my job wasn’t to translate commands, but to catch the uncertainties beneath them and give the model enough structure to understand without overreaching.
+                    <br>
+                    <br>
+                    Latency became another adversary. A system meant for someone with physical limitations cannot afford hesitation. I tuned streaming responses, trimmed payloads, and rewrote pieces of the pipeline more times than I liked to admit.
+                    <br>
+                    <br>
+                    But the most difficult challenge was something quieter: resisting the temptation to overbuild. Every feature hinted at another, and that at another, until ambition threatened to swallow the reason the project existed.
+                    <br>
+                    <br>
+                    I kept returning to the original story and used that to guide what stayed and what didn’t.
+                </p>
+                <h3>
+                    Outcome
+                </h3>
+                <p>
+                    VoiceCode became a functioning voice-controlled text editor. It could open files, navigate lines, and generate code from natural language reliably enough that the system felt less like an experiment and more like an early draft of a future tool.
+                    <br>
+                    <br>
+                    In working on it, I learned that accessibility isn’t an engineering challenge so much as a human one. Tools built for people who have lost something must move gently. If anything, VoiceCode taught me to step back and to build systems that serve, not <em>perform</em>.
+                    <br>
+                    <br>
+                    There are plans to expand it: the IDE I first set out to build, a terminal, code execution, even a desktop app. Ambitious ideas, yes, but ambition feels different now. Softer you know? More sober.
+                    <br>
+                    <br>
+                    Less about what I can build, and more about who I might be building it for.
+                </p>
+                <h3>
+                    Tech Stack
+                </h3>
+                <p>
+                    React <b>·</b> TypeScript <b>·</b> TailwindCSS <b>·</b> Vite <b>·</b> Node.js <b>·</b> Express Groq Llama 3.3 70B <b>·</b> OpenAI GPT-4o-mini Regex Engine <b>·</b> File System Tools
+                </p>
+            </section>
+        </main>
+        <br>
+        <!-- Footer -->
+        <footer class="footer" style="margin-top: auto;">
+            <div class="container">
+                <p>&copy; 2025 Aryan Vyahalkar. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>
