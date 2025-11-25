@@ -206,3 +206,221 @@ document.addEventListener('visibilitychange', () => {
         // Page is visible again—resume stuff if needed
     }
 });
+
+class ElectricBorder {
+  constructor(element) {
+    this.element = element;
+    this.filterId = `turbulent-displace-${Math.random().toString(36).substr(2, 9)}`;
+    this.speed = parseFloat(element.dataset.speed) || 1;
+    this.chaos = parseFloat(element.dataset.chaos) || 1;
+    this.thickness = parseFloat(element.dataset.thickness) || 2;
+    
+    this.init();
+  }
+
+  init() {
+    // Wrap the card content
+    const content = this.element.innerHTML;
+    this.element.innerHTML = '';
+    
+    // Create SVG
+    const svg = this.createSVG();
+    this.element.appendChild(svg);
+    
+    // Create layers
+    const layers = this.createLayers();
+    this.element.appendChild(layers);
+    
+    // Create content wrapper
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'eb-content';
+    contentDiv.innerHTML = content;
+    this.element.appendChild(contentDiv);
+    
+    // Add wrapper class
+    this.element.classList.add('electric-border-wrapper');
+    
+    // Set CSS variables
+    this.element.style.setProperty('--eb-border-width', `${this.thickness}px`);
+    
+    // Update animation
+    this.updateAnimation();
+    
+    // Handle resize
+    const resizeObserver = new ResizeObserver(() => this.updateAnimation());
+    resizeObserver.observe(this.element);
+  }
+
+  createSVG() {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.classList.add('eb-svg');
+    svg.setAttribute('aria-hidden', 'true');
+    
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    const filter = this.createFilter();
+    defs.appendChild(filter);
+    svg.appendChild(defs);
+    
+    this.svg = svg;
+    return svg;
+  }
+
+  createFilter() {
+    const filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+    filter.setAttribute('id', this.filterId);
+    filter.setAttribute('color-interpolation-filters', 'sRGB');
+    filter.setAttribute('x', '-200%');
+    filter.setAttribute('y', '-200%');
+    filter.setAttribute('width', '500%');
+    filter.setAttribute('height', '500%');
+
+    // Turbulence 1
+    const turb1 = this.createTurbulence('noise1', '1');
+    const offset1 = this.createOffset('offsetNoise1', 'dy', '700; 0');
+    
+    // Turbulence 2
+    const turb2 = this.createTurbulence('noise2', '1');
+    const offset2 = this.createOffset('offsetNoise2', 'dy', '0; -700');
+    
+    // Turbulence 3
+    const turb3 = this.createTurbulence('noise3', '2');
+    const offset3 = this.createOffset('offsetNoise3', 'dx', '490; 0');
+    
+    // Turbulence 4
+    const turb4 = this.createTurbulence('noise4', '2');
+    const offset4 = this.createOffset('offsetNoise4', 'dx', '0; -490');
+
+    // Composites
+    const comp1 = document.createElementNS('http://www.w3.org/2000/svg', 'feComposite');
+    comp1.setAttribute('in', 'offsetNoise1');
+    comp1.setAttribute('in2', 'offsetNoise2');
+    comp1.setAttribute('result', 'part1');
+
+    const comp2 = document.createElementNS('http://www.w3.org/2000/svg', 'feComposite');
+    comp2.setAttribute('in', 'offsetNoise3');
+    comp2.setAttribute('in2', 'offsetNoise4');
+    comp2.setAttribute('result', 'part2');
+
+    const blend = document.createElementNS('http://www.w3.org/2000/svg', 'feBlend');
+    blend.setAttribute('in', 'part1');
+    blend.setAttribute('in2', 'part2');
+    blend.setAttribute('mode', 'color-dodge');
+    blend.setAttribute('result', 'combinedNoise');
+
+    const displace = document.createElementNS('http://www.w3.org/2000/svg', 'feDisplacementMap');
+    displace.setAttribute('in', 'SourceGraphic');
+    displace.setAttribute('in2', 'combinedNoise');
+    displace.setAttribute('scale', String(30 * this.chaos));
+    displace.setAttribute('xChannelSelector', 'R');
+    displace.setAttribute('yChannelSelector', 'B');
+    this.displacementMap = displace;
+
+    filter.appendChild(turb1);
+    filter.appendChild(offset1);
+    filter.appendChild(turb2);
+    filter.appendChild(offset2);
+    filter.appendChild(turb3);
+    filter.appendChild(offset3);
+    filter.appendChild(turb4);
+    filter.appendChild(offset4);
+    filter.appendChild(comp1);
+    filter.appendChild(comp2);
+    filter.appendChild(blend);
+    filter.appendChild(displace);
+
+    return filter;
+  }
+
+  createTurbulence(result, seed) {
+    const turb = document.createElementNS('http://www.w3.org/2000/svg', 'feTurbulence');
+    turb.setAttribute('type', 'turbulence');
+    turb.setAttribute('baseFrequency', '0.02');
+    turb.setAttribute('numOctaves', '10');
+    turb.setAttribute('result', result);
+    turb.setAttribute('seed', seed);
+    return turb;
+  }
+
+  createOffset(result, attr, values) {
+    const offset = document.createElementNS('http://www.w3.org/2000/svg', 'feOffset');
+    offset.setAttribute('result', result);
+    
+    const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+    animate.setAttribute('attributeName', attr);
+    animate.setAttribute('values', values);
+    animate.setAttribute('dur', `${6 / this.speed}s`);
+    animate.setAttribute('repeatCount', 'indefinite');
+    animate.setAttribute('calcMode', 'linear');
+    
+    offset.appendChild(animate);
+    return offset;
+  }
+
+  createLayers() {
+    const layers = document.createElement('div');
+    layers.className = 'eb-layers';
+    
+    const stroke = document.createElement('div');
+    stroke.className = 'eb-stroke';
+    stroke.style.filter = `url(#${this.filterId})`;
+    this.stroke = stroke;
+    
+    const glow1 = document.createElement('div');
+    glow1.className = 'eb-glow-1';
+    
+    const glow2 = document.createElement('div');
+    glow2.className = 'eb-glow-2';
+    
+    const bgGlow = document.createElement('div');
+    bgGlow.className = 'eb-background-glow';
+    
+    layers.appendChild(stroke);
+    layers.appendChild(glow1);
+    layers.appendChild(glow2);
+    layers.appendChild(bgGlow);
+    
+    return layers;
+  }
+
+  updateAnimation() {
+    const width = Math.max(1, Math.round(this.element.clientWidth));
+    const height = Math.max(1, Math.round(this.element.clientHeight));
+    
+    const animates = this.svg.querySelectorAll('animate');
+    const dyAnims = Array.from(animates).filter(a => a.getAttribute('attributeName') === 'dy');
+    const dxAnims = Array.from(animates).filter(a => a.getAttribute('attributeName') === 'dx');
+    
+    if (dyAnims[0]) dyAnims[0].setAttribute('values', `${height}; 0`);
+    if (dyAnims[1]) dyAnims[1].setAttribute('values', `0; -${height}`);
+    if (dxAnims[0]) dxAnims[0].setAttribute('values', `${width}; 0`);
+    if (dxAnims[1]) dxAnims[1].setAttribute('values', `0; -${width}`);
+    
+    // Restart animations
+    animates.forEach(a => {
+      try {
+        a.beginElement();
+      } catch (e) {
+        // Browser doesn't support beginElement
+      }
+    });
+  }
+}
+
+// Initialize electric borders on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Apply to all project cards
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.dataset.speed = '1';
+    card.dataset.chaos = '0.5';
+    card.dataset.thickness = '2';
+    new ElectricBorder(card);
+  });
+  
+  // Apply to all blog cards (if you have them)
+  document.querySelectorAll('.blog-card').forEach(card => {
+    card.dataset.speed = '1';
+    card.dataset.chaos = '0.5';
+    card.dataset.thickness = '2';
+    new ElectricBorder(card);
+  });
+});
