@@ -416,3 +416,235 @@ document.addEventListener('DOMContentLoaded', function() {
     new ElectricBorder(card);
   });
 });
+
+// TextType - Vanilla JS Implementation
+class TextType {
+  constructor(element, options = {}) {
+    this.element = element;
+    this.originalText = element.textContent.trim();
+    
+    this.options = {
+      text: options.text || [this.originalText],
+      typingSpeed: options.typingSpeed || 75,
+      deletingSpeed: options.deletingSpeed || 30,
+      pauseDuration: options.pauseDuration || 2000,
+      initialDelay: options.initialDelay || 0,
+      loop: options.loop !== undefined ? options.loop : true,
+      showCursor: options.showCursor !== undefined ? options.showCursor : true,
+      hideCursorWhileTyping: options.hideCursorWhileTyping || false,
+      cursorCharacter: options.cursorCharacter || '|',
+      textColors: options.textColors || [],
+      variableSpeed: options.variableSpeed || null, // { min: 50, max: 150 }
+      reverseMode: options.reverseMode || false,
+      startOnVisible: options.startOnVisible !== undefined ? options.startOnVisible : true
+    };
+
+    this.textArray = Array.isArray(this.options.text) ? this.options.text : [this.options.text];
+    this.displayedText = '';
+    this.currentCharIndex = 0;
+    this.currentTextIndex = 0;
+    this.isDeleting = false;
+    this.timeout = null;
+    this.isVisible = !this.options.startOnVisible;
+    this.hasStarted = false;
+
+    this.init();
+  }
+
+  init() {
+    // Clear original content
+    this.element.innerHTML = '';
+    this.element.classList.add('text-type');
+
+    // Create content span
+    this.contentSpan = document.createElement('span');
+    this.contentSpan.className = 'text-type__content';
+    this.element.appendChild(this.contentSpan);
+
+    // Create cursor
+    if (this.options.showCursor) {
+      this.cursorSpan = document.createElement('span');
+      this.cursorSpan.className = 'text-type__cursor';
+      this.cursorSpan.textContent = this.options.cursorCharacter;
+      this.element.appendChild(this.cursorSpan);
+    }
+
+    // Setup intersection observer if needed
+    if (this.options.startOnVisible) {
+      this.setupIntersectionObserver();
+    } else {
+      this.start();
+    }
+  }
+
+  setupIntersectionObserver() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !this.hasStarted) {
+            this.isVisible = true;
+            this.hasStarted = true;
+            this.start();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(this.element);
+  }
+
+  start() {
+    if (!this.isVisible) return;
+    
+    // Initial delay before starting
+    this.timeout = setTimeout(() => {
+      this.type();
+    }, this.options.initialDelay);
+  }
+
+  getRandomSpeed() {
+    if (!this.options.variableSpeed) {
+      return this.options.typingSpeed;
+    }
+    const { min, max } = this.options.variableSpeed;
+    return Math.random() * (max - min) + min;
+  }
+
+  getCurrentTextColor() {
+    if (this.options.textColors.length === 0) return null;
+    return this.options.textColors[this.currentTextIndex % this.options.textColors.length];
+  }
+
+  updateDisplay() {
+    this.contentSpan.textContent = this.displayedText;
+    
+    // Update color if specified
+    const color = this.getCurrentTextColor();
+    if (color) {
+      this.contentSpan.style.color = color;
+    }
+
+    // Handle cursor visibility
+    if (this.options.showCursor && this.cursorSpan) {
+      const currentText = this.textArray[this.currentTextIndex];
+      const shouldHideCursor = this.options.hideCursorWhileTyping && 
+        (this.currentCharIndex < currentText.length || this.isDeleting);
+      
+      if (shouldHideCursor) {
+        this.cursorSpan.classList.add('text-type__cursor--hidden');
+      } else {
+        this.cursorSpan.classList.remove('text-type__cursor--hidden');
+      }
+    }
+  }
+
+  type() {
+    const currentText = this.textArray[this.currentTextIndex];
+    const processedText = this.options.reverseMode 
+      ? currentText.split('').reverse().join('') 
+      : currentText;
+
+    if (this.isDeleting) {
+      // Deleting mode
+      if (this.displayedText === '') {
+        this.isDeleting = false;
+        
+        // Check if we should stop (no loop and last text)
+        if (this.currentTextIndex === this.textArray.length - 1 && !this.options.loop) {
+          return;
+        }
+
+        // Move to next text
+        this.currentTextIndex = (this.currentTextIndex + 1) % this.textArray.length;
+        this.currentCharIndex = 0;
+        
+        // Pause before typing next text
+        this.timeout = setTimeout(() => {
+          this.type();
+        }, this.options.pauseDuration);
+      } else {
+        // Delete one character
+        this.displayedText = this.displayedText.slice(0, -1);
+        this.updateDisplay();
+        
+        this.timeout = setTimeout(() => {
+          this.type();
+        }, this.options.deletingSpeed);
+      }
+    } else {
+      // Typing mode
+      if (this.currentCharIndex < processedText.length) {
+        // Add one character
+        this.displayedText += processedText[this.currentCharIndex];
+        this.currentCharIndex++;
+        this.updateDisplay();
+        
+        const speed = this.options.variableSpeed 
+          ? this.getRandomSpeed() 
+          : this.options.typingSpeed;
+        
+        this.timeout = setTimeout(() => {
+          this.type();
+        }, speed);
+      } else {
+        // Finished typing current text
+        if (this.textArray.length === 1 && !this.options.loop) {
+          // Single text, no loop - stop here
+          return;
+        }
+
+        // Check if we should stop (no loop and last text)
+        if (!this.options.loop && this.currentTextIndex === this.textArray.length - 1) {
+          return;
+        }
+
+        // Pause before deleting
+        this.timeout = setTimeout(() => {
+          this.isDeleting = true;
+          this.type();
+        }, this.options.pauseDuration);
+      }
+    }
+  }
+
+  destroy() {
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
+  }
+}
+
+// Initialize TextType on all h1 elements with id="type"
+document.addEventListener('DOMContentLoaded', function() {
+  const typeElements = document.querySelectorAll('h1[id="type"]');
+  
+  if (typeElements.length === 0) return;
+
+  // Store instances for cleanup if needed
+  window.textTypeInstances = [];
+
+  typeElements.forEach((element, index) => {
+    // Get the original text
+    const originalText = element.textContent.trim();
+    
+    // You can customize options per element or use same for all
+    const textType = new TextType(element, {
+      text: [originalText],              // Use original text, or provide array: ["Text 1", "Text 2", "Text 3"]
+      typingSpeed: 75,                   // Speed of typing in ms
+      deletingSpeed: 30,                 // Speed of deleting in ms
+      pauseDuration: 1500,               // Pause after typing complete
+      initialDelay: index * 200,         // Stagger animations by 200ms per element
+      loop: true,                        // Loop the animation
+      showCursor: true,                  // Show blinking cursor
+      hideCursorWhileTyping: false,      // Hide cursor while typing
+      cursorCharacter: '_',              // Cursor character
+      textColors: [],                    // Array of colors for each text: ['#7e2bff', '#7cb2ff', '#ff6b6b']
+      variableSpeed: null,               // Random speed: { min: 50, max: 150 }
+      reverseMode: false,                // Type text in reverse
+      startOnVisible: true               // Start when element is visible
+    });
+
+    window.textTypeInstances.push(textType);
+  });
+});
