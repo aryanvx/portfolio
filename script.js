@@ -391,6 +391,24 @@ document.addEventListener('DOMContentLoaded', function() {
     new ElectricBorder(card);
   });
   
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.case-study-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+        // Close all open dropdowns first
+        document.querySelectorAll('.case-study-content.open').forEach(function(openContent) {
+            openContent.classList.remove('open');
+            setTimeout(() => openContent.style.display = 'none', 300);
+        });
+
+        const content = btn.nextElementSibling;
+        if (!content.classList.contains('open')) {
+            content.style.display = 'block';
+            setTimeout(() => content.classList.add('open'), 10);
+        }
+        });
+    });
+    });
+
   document.querySelectorAll('.blog-card').forEach(card => {
     card.dataset.speed = '1';
     card.dataset.chaos = '0.5';
