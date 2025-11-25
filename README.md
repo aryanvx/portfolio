@@ -76,5 +76,7 @@ Because this is a static website:
 ### SEO Optimization
 - Includes meta tags for description, keywords, and author
 - Semantic HTML structure to improve search engine crawling
-
 - Viewport meta tag for mobile optimization
+
+## Credits
+- Animations and backgrounds from [ReactBits.dev](reactbits.dev)
