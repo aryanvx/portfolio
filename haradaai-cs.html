@@ -59,58 +59,69 @@
             </section>
             <section>
                 <p>
-                    There are projects we build out of curiosity, and there are those we build because something in us refuses to stay still. haradaAI belonged to the latter. It began as a whisper of an idea: a system that could bridge conversation and intention, not with theatrical ambition but with the quiet precision of a tool that knew its place in the world. Yet I admit, when I started, I did not fully understand the magnitude of what I was trying to create. I only sensed that I was moving toward something inevitable.
+                    There are projects we build out of curiosity, and there are those we build because something in us refuses to stay still. haradaAI belonged to the latter. It began as an idea I saw on the <a href="https://www.gethalfbaked.com/" target="_new">Half Baked newsletter</a> (go check it out it's great): a system that could bridge conversation and intention, not with theatrical ambition but with the precision of a tool that knew its place in the world.
+                    <br>
+                    <br>
+                    Yet I will admit, when I started, I did not fully understand the magnitude of what I was trying to create.
                 </p>
                 <h3>
                     Context
                 </h3>
                 <p>
-                    haradaAI was born from an observation, simple enough to be overlooked: people often know what they want to say, but not how to say it in the shape the world demands. Whether it was writing emails, structuring assignments, explaining concepts, or carrying a piece of thought from one person to another, there was a gap between intention and articulation. I wanted to close it.
-                    So I set out to build a web-based AI assistant that didn’t pretend to be a personality, nor a sage, nor a spectacle, but a functional extension of the user’s own mind—an interpreter that carried their clarity forward.
+                    haradaAI was born from an observation: people often know what they want to say, but not how to say it in the shape the world demands. Whether it was writing emails, structuring assignments, explaining concepts, or carrying a piece of thought from one person to another, there was a gap between intention and articulation.
+                    <br>
+                    <br>
+                    And being the person that I am, I wanted to close it.
+                    <br>
+                    <br>
+                    So I set out to build a web-based AI assistant that didn’t pretend to be a personality, nor a sage, nor a spectacle, but a digital extension of the user’s own mind.
                 </p>
                 <h3>
                     Approach
                 </h3>
                 <p>
-                    I began by shaping the interface as plainly as a clean sheet of paper. No theatrics. Nothing excessive. The user would enter their prompt, choose the mode they needed—explain, simplify, generate, or refine—and watch as the system responded with the restraint and discipline of a tool that understood its boundaries.
+                    I began by shaping the interface as plainly as a clean sheet of paper. No theatrics. Nothing excessive. The user would enter their prompt, choose the mode they needed (explain, simplify, generate, or refine) and watch as the system responded with the restraint and discipline of a tool that actually knew its boundaries.
                     <br>
                     <br>
                     The architecture followed the same philosophy.
                     <br>
                     <br>
-                    A minimal frontend written in semantic HTML and responsive CSS, paired with fast, asynchronous JavaScript to handle streaming responses from the LLM backend. I designed the request pipeline so nothing felt sluggish; the model’s words arrived as though spoken breath by breath instead of dumped in a block. The result was an experience that felt immediate, almost intimate.
+                    A frontend written in semantic HTML and responsive CSS, paired with fast, asynchronous JavaScript to handle streaming responses from the LLM backend. I designed the request pipeline so nothing felt sluggish. The result was an 8✕8 grid.
                     <br>
                     <br>
-                    But the true weight of haradaAI was in its ability to adapt. Not flamboyantly, not boastfully, but subtly—learning the user’s preference for tone, detail, and format within each session, then disappearing without a trace when the tab closed. Everything temporary. Everything intentional. No memory, no surveillance, no lingering echoes.
+                    But the true weight of haradaAI was in its ability to adapt. Not flamboyantly, not boastfully, but subtly.
+                    <br>
+                    <br>
+                    It could learn the user’s preference for tone, detail, and format within each session. Everything temporary (but not if you set it to public, because then anyone can see it).
                 </p>
                 <h3>
                     Challenges
                 </h3>
                 <p>
-                    The first challenge was clarity—how to let the user move from idea to expression without friction.
-                    The second was restraint—preventing the system from overstepping, from adding opinion or flourish where none was needed.
-                    And the third was reliability. A model may hallucinate, but a tool may not. So I designed guardrails: concise prompts, output checks, and a fallback system that ensured the assistant always returned something grounded—even when the user didn’t provide enough to work with.
+                    The first challenge was how to let the user move from idea to expression and to limit the friction.
                     <br>
                     <br>
-                    Perhaps the most difficult part emerged late in development: realizing that simplicity is not the absence of complexity, but its containment. I discarded feature after feature—history logs, persistent profiles, theme variations—because they weighed the system down with a kind of greed. What remained was the core, clean and unburdened.
+                    The second was restraint. Preventing the system from overstepping, from adding opinion or flourish where none was needed.
+                    <br>
+                    <br>
+                    And the third was reliability. A model may hallucinate, but a tool may not. So I designed guardrails: concise prompts, output checks, and a fallback system that ensured the assistant always returned something practical even when the user prompted something lackluster and vague.
+                    <br>
+                    <br>
+                    But I came across the most difficult part later in development. I realized that simplicity is not the absence of complexity, but its containment. I discarded feature after feature. Stuff like history logs, persistent profiles, theme variations. And all because they weighed the system down with a kind of greed.
                 </p>
                 <h3>
                     Outcome
                 </h3>
                 <p>
-                    haradaAI became what I hoped it would be: a disciplined, fast, and quietly capable writing assistant. Students used it to draft explanations, professionals to refine their messages, friends to turn half-formed thoughts into something sharper.
-                    It didn’t promise to be everything. It didn’t pretend to know you.
+                    haradaAI became what I hoped it would be: a disciplined, fast, and quietly capable writing assistant. Students used it to draft explanations, professionals used it to refine their messages, and friends used it to turn half-formed thoughts into something cool.
                     <br>
                     <br>
-                    It simply did its job, and did it well.
-                    <br>
-                    <br>
-                    In building it, I learned something that stays with me even now. When you strip a system down to its essentials, what remains is not emptiness but intent. And coding, like most things in life, becomes clearer when you stop trying to impress and start trying to understand.
+                    In building it, I learned something that stays with me even now. When you strip a system down to its essentials, what remains is intent. And coding, like most things in life, becomes clearer when you stop trying to impress and start trying to understand.
                 </p>
                 <h3>
                     Tech Stack
                 </h3>
-                    HTML <b>·</b> CSS <b>·</b> JavaScript <b>·</b> OpenAI API <b>·</b> Async Fetch Streaming
+                    HTML5 <b>·</b> CSS3 <b>·</b> JavaScript <b>·</b> Groq API <b>·</b> Async Fetch Streaming
                 </p>
             </section>
         </main>
