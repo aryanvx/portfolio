@@ -79,5 +79,6 @@ Because this is a static website:
 - Viewport meta tag for mobile optimization
 
 ## Credits
-- Animations and backgrounds from [ReactBits.dev]([url](https://reactbits.dev/))
+- Animations and backgrounds from <a href="https://reactbits.dev">ReactBits.dev</a>
+
 
