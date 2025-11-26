@@ -588,18 +588,14 @@ class TextType {
           this.type();
         }, speed);
       } else {
-        // Finished typing current text
         if (this.textArray.length === 1 && !this.options.loop) {
-          // Single text, no loop - stop here
           return;
         }
 
-        // Check if we should stop (no loop and last text)
         if (!this.options.loop && this.currentTextIndex === this.textArray.length - 1) {
           return;
         }
 
-        // Pause before deleting
         this.timeout = setTimeout(() => {
           this.isDeleting = true;
           this.type();
@@ -615,27 +611,23 @@ class TextType {
   }
 }
 
-// Initialize TextType on all h1 elements with id="type"
 document.addEventListener('DOMContentLoaded', function() {
   const typeElements = document.querySelectorAll('h1[id="type"]');
   
   if (typeElements.length === 0) return;
 
-  // Store instances for cleanup if needed
   window.textTypeInstances = [];
 
   typeElements.forEach((element, index) => {
-    // Get the original text
     const originalText = element.textContent.trim();
     
-    // You can customize options per element or use same for all
     const textType = new TextType(element, {
       text: [originalText],              // Use original text, or provide array: ["Text 1", "Text 2", "Text 3"]
       typingSpeed: 75,                   // Speed of typing in ms
       deletingSpeed: 30,                 // Speed of deleting in ms
       pauseDuration: 1500,               // Pause after typing complete
       initialDelay: index * 200,         // Stagger animations by 200ms per element
-      loop: true,                        // Loop the animation
+      loop: false,                        // Loop the animation
       showCursor: true,                  // Show blinking cursor
       hideCursorWhileTyping: false,      // Hide cursor while typing
       cursorCharacter: '_',              // Cursor character
