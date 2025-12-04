@@ -950,26 +950,22 @@ body.dark-mode .hero-content {
   transition: all 0.3s ease;
 }
 
-/* Optional: Style for encrypted characters */
 .encrypted-char {
   color: var(--text-muted);
   opacity: 0.7;
 }
 
-/* Optional: Style for revealed characters */
 .revealed-char {
   color: var(--text-color);
   opacity: 1;
 }
 
-/* Make the hero title a wrapper for the animation */
 .hero-title.has-decrypt {
   display: inline-block;
   cursor: pointer;
   user-select: none;
 }
 
-/* Screen reader only text */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1010,7 +1006,6 @@ body.dark-mode .hero-content {
   }
 }
 
-/* Optional: Different colors for cycling text */
 .text-type--color-0 { color: var(--text-color); }
 .text-type--color-1 { color: var(--accent-color); }
 .text-type--color-2 { color: #7e2bff; }

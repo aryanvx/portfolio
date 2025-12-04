@@ -142,7 +142,7 @@
                                     <span>linkedin</span>
                                 </a>
                             </div>
-                            <div class="github-graph-container" style="margin-top: 20px; padding: 15px; background: var(--card-bg, #f8f9fa); border-radius: 12px; border: 1px solid var(--border-color, #e0e0e0);">
+                            <div class="github-graph-container" style="margin-top: 20px; padding: 15px; background: var(--card-bg, #00000); border-radius: 12px; border: 1px solid var(--border-color, #e0e0e0);">
                                 <div class="github-graph-header" style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
                                     <i class="fab fa-github"></i>
                                     GitHub Activity
@@ -153,16 +153,15 @@
                                 <div style="display: flex; align-items: center; justify-content: flex-end; gap: 4px; margin-top: 10px; font-size: 11px; color: var(--text-secondary);">
                                     <span>Less</span>
                                     <div style="display: flex; gap: 2px;">
-                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #ebedf0;"></div>
-                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #c6a8ff;"></div>
-                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #9d5eff;"></div>
+                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #161b22;"></div>
+                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #4a1b7f;"></div>
+                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #6023b3;"></div>
                                         <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #7e2bff;"></div>
-                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #5f00d4;"></div>
+                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #9d5eff;"></div>
                                     </div>
                                     <span>More</span>
                                 </div>
                             </div>
-
                             <div id="tooltip" style="position: absolute; background: rgba(0, 0, 0, 0.9); color: white; padding: 6px 10px; border-radius: 6px; font-size: 11px; pointer-events: none; z-index: 1000; white-space: nowrap; display: none;"></div>
                         </div>
                     </div>
@@ -215,12 +214,11 @@
             }
 
             function getColor(count) {
-                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                if (count === 0) return isDark ? '#1a1a1a' : '#ebedf0';
-                if (count < 3) return '#c6a8ff';
-                if (count < 6) return '#9d5eff';
-                if (count < 9) return '#7e2bff';
-                return '#5f00d4';
+                if (count === 0) return '#161b22';  // Dark grey/black
+                if (count < 3) return '#4a1b7f';    // Dark purple
+                if (count < 6) return '#6023b3';    // Medium purple
+                if (count < 9) return '#7e2bff';    // Your main purple
+                return '#9d5eff';                   // Bright purple
             }
 
             function renderGraph(contributions) {
@@ -262,6 +260,3 @@
         </script>
     </body>
 </html>
-
-
-
