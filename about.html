@@ -142,6 +142,28 @@
                                     <span>linkedin</span>
                                 </a>
                             </div>
+                            <div class="github-graph-container" style="margin-top: 20px; padding: 15px; background: var(--card-bg, #f8f9fa); border-radius: 12px; border: 1px solid var(--border-color, #e0e0e0);">
+                                <div class="github-graph-header" style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                                    <i class="fab fa-github"></i>
+                                    GitHub Activity
+                                </div>
+                                <div id="graph-content" class="github-graph" style="overflow-x: auto;">
+                                    <div style="padding: 20px; text-align: center; font-size: 13px; color: var(--text-secondary);">Loading contributions...</div>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 4px; margin-top: 10px; font-size: 11px; color: var(--text-secondary);">
+                                    <span>Less</span>
+                                    <div style="display: flex; gap: 2px;">
+                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #ebedf0;"></div>
+                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #c6a8ff;"></div>
+                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #9d5eff;"></div>
+                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #7e2bff;"></div>
+                                        <div style="width: 10px; height: 10px; border-radius: 2px; background-color: #5f00d4;"></div>
+                                    </div>
+                                    <span>More</span>
+                                </div>
+                            </div>
+
+                            <div id="tooltip" style="position: absolute; background: rgba(0, 0, 0, 0.9); color: white; padding: 6px 10px; border-radius: 6px; font-size: 11px; pointer-events: none; z-index: 1000; white-space: nowrap; display: none;"></div>
                         </div>
                     </div>
                     <div class="about-text">
@@ -179,6 +201,65 @@
         </footer>
 
         <script src="script.js"></script>
+        <script>
+            const username = 'aryanvx';
+
+            async function fetchContributions() {
+                try {
+                    const response = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}`);
+                    const data = await response.json();
+                    if (data.contributions) renderGraph(data.contributions);
+                } catch (error) {
+                    document.getElementById('graph-content').innerHTML = '<div style="padding: 20px; text-align: center;">Unable to load</div>';
+                }
+            }
+
+            function getColor(count) {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                if (count === 0) return isDark ? '#1a1a1a' : '#ebedf0';
+                if (count < 3) return '#c6a8ff';
+                if (count < 6) return '#9d5eff';
+                if (count < 9) return '#7e2bff';
+                return '#5f00d4';
+            }
+
+            function renderGraph(contributions) {
+                const weeks = [];
+                for (let i = 0; i < contributions.length; i += 7) {
+                    weeks.push(contributions.slice(i, i + 7));
+                }
+                
+                let html = '<div style="display: inline-flex; gap: 3px; padding: 2px;">';
+                weeks.forEach(week => {
+                    html += '<div style="display: flex; flex-direction: column; gap: 3px;">';
+                    week.forEach(day => {
+                        html += `<div style="width: 10px; height: 10px; border-radius: 2px; background-color: ${getColor(day.count)}; cursor: pointer; transition: transform 0.2s;" 
+                                    onmouseenter="showTooltip(event, '${day.date}', ${day.count})"
+                                    onmouseleave="hideTooltip()"
+                                    onmouseover="this.style.transform='scale(1.3)'; this.style.border='1px solid #7e2bff';"
+                                    onmouseout="this.style.transform='scale(1)'; this.style.border='none';"></div>`;
+                    });
+                    html += '</div>';
+                });
+                html += '</div>';
+                document.getElementById('graph-content').innerHTML = html;
+            }
+
+            function showTooltip(event, date, count) {
+                const tooltip = document.getElementById('tooltip');
+                const formattedDate = new Date(date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+                tooltip.textContent = `${count} contribution${count !== 1 ? 's' : ''} on ${formattedDate}`;
+                tooltip.style.display = 'block';
+                tooltip.style.left = event.pageX + 10 + 'px';
+                tooltip.style.top = event.pageY - 30 + 'px';
+            }
+
+            function hideTooltip() {
+                document.getElementById('tooltip').style.display = 'none';
+            }
+
+            fetchContributions();
+        </script>
     </body>
 </html>
 
