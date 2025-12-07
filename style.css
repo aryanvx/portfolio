@@ -360,6 +360,7 @@ a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    align-items: start;
 }
 
 .project-card {
@@ -371,6 +372,8 @@ a {
     transition: all 0.3s ease;
     border: 1px solid var(--card-border);
     box-shadow: 0 0 10px var(--shadow);
+    height: auto;
+    align-self: start;
 }
 
 .project-card:hover {
