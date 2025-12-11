@@ -30,7 +30,7 @@ body.dark-mode {
     --card-bg: #161b22;
     --card-border: #30363d;
     --shadow: rgba(0, 0, 0, 0.8);
-    --accent-color: #7e2bff;
+    --accent-color: #1e90ff;
     --hover-bg: #21262d;
 }
 
@@ -245,7 +245,7 @@ a {
 }
 
 .btn-primary:hover {
-    background-color: #7e2bff;
+    background-color: #1e90ff;
     transform: translateY(-2px);
 }
 
@@ -655,7 +655,7 @@ body.dark-mode .btn-primary {
 }
 
 body.dark-mode .btn-primary:hover {
-    background-color: #7e2bff;
+    background-color: #1e90ff;
     transform: translateY(-2px);
 }
 
@@ -807,7 +807,7 @@ body {
 }
 
 .electric-border-wrapper {
-  --electric-border-color: #7e2bff;
+  --electric-border-color: #1e90ff;
   --eb-border-width: 2px;
   position: relative;
   border-radius: 12px;
@@ -1011,4 +1011,4 @@ body.dark-mode .hero-content {
 
 .text-type--color-0 { color: var(--text-color); }
 .text-type--color-1 { color: var(--accent-color); }
-.text-type--color-2 { color: #7e2bff; }
+.text-type--color-2 { color: #1e90ff; }

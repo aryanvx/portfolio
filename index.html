@@ -524,7 +524,7 @@
         heroSection.insertBefore(pixelBlastContainer, heroSection.firstChild);
 
         const isDarkMode = document.body.classList.contains('dark-mode');
-        const color = isDarkMode ? '#7e2bff' : '#1a1a1a';
+        const color = isDarkMode ? '#1e90ff' : '#1a1a1a';
 
         const pixelBlast = new PixelBlast(pixelBlastContainer, {
             variant: 'circle',
@@ -547,7 +547,7 @@
             themeToggle.addEventListener('click', function() {
             setTimeout(() => {
                 const isDark = document.body.classList.contains('dark-mode');
-                const newColor = isDark ? '#7e2bff' : '#1a1a1a';
+                const newColor = isDark ? '#1e90ff' : '#1a1a1a';
                 pixelBlast.uniforms.uColor.value.set(newColor);
             }, 50);
             });

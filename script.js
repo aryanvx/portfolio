@@ -631,7 +631,7 @@ document.addEventListener('DOMContentLoaded', function() {
       showCursor: true,                  // Show blinking cursor
       hideCursorWhileTyping: false,      // Hide cursor while typing
       cursorCharacter: '_',              // Cursor character
-      textColors: [],                    // Array of colors for each text: ['#7e2bff', '#7cb2ff', '#ff6b6b']
+      textColors: [],                    // Array of colors for each text: ['#1e90ff', '#7cb2ff', '#ff6b6b']
       variableSpeed: null,               // Random speed: { min: 50, max: 150 }
       reverseMode: false,                // Type text in reverse
       startOnVisible: true               // Start when element is visible
