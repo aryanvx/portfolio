@@ -1038,3 +1038,54 @@ body.dark-mode .hero-content {
 .text-type--color-0 { color: var(--text-color); }
 .text-type--color-1 { color: var(--accent-color); }
 .text-type--color-2 { color: #1e90ff; }
+
+/* Tech Stack Alignment Fix - Add to your style.css */
+
+/* Create a two-column layout for large project cards */
+.project-card .card-content {
+  display: grid;
+  grid-template-columns: 1fr 350px; /* Description on left, tech stack on right */
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Tech stack container - keeps it aligned */
+.tech-stack-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Individual tech rows */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+/* Tech stack labels (Frontend, Backend, etc.) */
+.project-tech .tech-tag:first-child {
+  min-width: 100px; /* Ensures labels are aligned */
+  font-weight: 100;
+}
+
+/* Make links section span full width */
+.project-links {
+  grid-column: 1 / -1; /* Spans both columns */
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Responsive: Stack on smaller screens */
+@media screen and (max-width: 968px) {
+  .project-card .card-content {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+  
+  .project-links {
+    grid-column: 1;
+  }
+}

@@ -79,106 +79,154 @@
                     <p>A showcase of notable stuff I've worked on.</p>
                     <br>
                 </div>
-                <div class="project-card">
+                <div class="project-card large">
                     <div class="project-image">
-                        <img src="assets/projects/haradaai.png" alt="haradaAI Project" loading="lazy" style="width: 100%">
+                        <img src="assets/projects/haradaai.png" alt="haradaAI Project" width="100%" loading="lazy">
                     </div>
                     <br>
                     <div class="card-header">
-                        <h3 class="blog-title"><i class="fa-solid fa-crosshairs"></i><br>haradaAI</h3>
-                        <span>A goal-planning web application inspired by the Harada Method, the goal-setting framework famously used by MLB star Shohei Ohtani when he was just a high school student. The app transforms any ambitious goal into a structured 9x9 grid containing 8 supporting pillars and 64 actionable tasks, giving users a comprehensive roadmap to achieve their objectives. Implemented client-side routing with React Router and configured Vercel rewrites to handle SPA navigation, resolving 404 errors on direct URL access to shared grids.</span>
+                        <h3 class="blog-title">
+                            <i class="fa-solid fa-crosshairs"></i><br>
+                            haradaAI
+                        </h3>
                     </div>
                     <div class="card-content">
-                        <br>
-                        <div class="project-tech">
-                            <span class="tech-tag"><b>Frontend</b></span> -->
-                            <span class="tech-tag">React |</span>
-                            <span class="tech-tag">TypeScript | </span>
-                            <span class="tech-tag">TailwindCSS |</span>
-                            <span class="tech-tag"> React Router</span>
+                        <div class="card-description">
+                            <p>A goal-planning web application inspired by the Harada Method, the goal-setting framework famously used by MLB star Shohei Ohtani when he was just a high school student. The app transforms any ambitious goal into a structured 9x9 grid containing 8 supporting pillars and 64 actionable tasks, giving users a comprehensive roadmap to achieve their objectives. Implemented client-side routing with React Router and configured Vercel rewrites to handle SPA navigation, resolving 404 errors on direct URL access to shared grids.</p>
                         </div>
-                        <div class="project-tech">
-                            <span class="tech-tag"><b>Backend</b></span> -->
-                            <span class="tech-tag">Supabase (PostgreSQL database + Edge Functions)</span>
+                        <div class="tech-stack-container">
+                            <div class="project-tech">
+                                <span class="tech-label"><b>Frontend tech stack</b></span> -->
+                                <div class="tech-tags">
+                                    <span class="tech-tag">React</span> |
+                                    <span class="tech-tag">TypeScript</span> |
+                                    <span class="tech-tag">TailwindCSS</span> |
+                                    <span class="tech-tag">React Router</span>
+                                </div>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-label"><b>Backend tech stack</b></span> -->
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Supabase (PostgreSQL + Edge Functions)</span>
+                                </div>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-label"><b>AI Tier</b></span> -->
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Groq's (Meta) Llama 3.3 70B Versatile model</span>
+                                    <span class="tech-tag"> </span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="project-tech">
-                            <span class="tech-tag"><b>AI Tier</b></span> -->
-                            <span class="tech-tag">Groq's Llama 3.3 70B</span>
+                        <div class="project-links">
+                            <a href="https://harada-chi.vercel.app/" target="_blank">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo
+                            </a> |
+                            <a href="https://github.com/aryanvx/harada" target="_blank">
+                                <i class="fab fa-github"></i> Source code
+                            </a> |
+                            <a href="case-studies/haradaai-cs.html">
+                                <i class="fa-solid fa-file"></i> Case study
+                            </a>
                         </div>
-                        <br>
-                        <a href="https://harada-chi.vercel.app/" target="_new"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo</a> |
-                        <a href="https://github.com/aryanvx/harada" target="_new"><i class="fab fa-github"></i> Source code</a> |
-                        <a href="case-studies/haradaai-cs.html"><i class="fa-solid fa-file"></i> Case study</a>
                     </div>
                 </div>
                 <br>
-                <div class="project-card">
+                <div class="project-card large">
                     <div class="project-image">
-                        <img src="assets/projects/voicecode.png" alt="VoiceCode Project" loading="lazy" style="width: 100%">
+                        <img src="assets/projects/voicecode.png" alt="VoiceCode Project" width="100%" loading="lazy">
                     </div>
                     <br>
                     <div class="card-header">
-                        <h3 class="blog-title"><i class="fa-solid fa-microphone-lines"></i><br>VoiceCode</h3>
-                        <span>A voice-controlled coding assistant that reimagines how we write code by letting your voice do the heavy lifting instead of the keyboard. Originally inspired by a teacher's suggestion (shoutout Mr. Gardner) to build something for physically impaired coders, it's grown into a full-featured voice-driven code editor. Built a flexible regex-based command parser that recognizes natural language variations for navigation commands, allowing users to say "go to," "navigate to," or "jump to" interchangeably. Implemented a dual-mode system that gives users control over how literally the AI interprets their requests (smart vs. strict mode). Planning to evolve this into a full AI-powered development environment that learns your coding style, explains bugs, and provides real-time feedback on your code.</span>
+                        <h3 class="blog-title">
+                            <i class="fa-solid fa-microphone-lines"></i><br>
+                            VoiceCode
+                        </h3>
                     </div>
                     <div class="card-content">
-                        <br>
-                        <div class="project-tech">
-                            <span class="tech-tag"><b>Frontend</b></span> -->
-                            <span class="tech-tag">React |</span>
-                            <span class="tech-tag">TypeScript | </span>
-                            <span class="tech-tag">TailwindCSS |</span>
-                            <span class="tech-tag"> Vite</span>
+                        <div class="card-description">
+                            <p>A voice-controlled coding assistant that lets your voice handle the heavy lifting instead of the keyboard. Inspired by a teacher’s suggestion (shoutout Mr. Gardner) to help physically impaired coders, it’s evolved into a full-featured voice-driven code editor. Uses a flexible regex-based command parser that supports natural navigation phrases like “go to,” “navigate to,” or “jump to.” Includes smart vs. strict interpretation modes and is evolving into an AI IDE that learns your style and explains bugs in real time.</p>
                         </div>
-                        <div class="project-tech">
-                            <span class="tech-tag"><b>Backend</b></span> -->
-                            <span class="tech-tag">Node.js</span> |
-                            <span class="tech-tag">Express</span>
+                        <div class="tech-stack-container">
+                            <div class="project-tech">
+                                <span class="tech-label"><b>Frontend tech stack</b></span> -->
+                                <div class="tech-tags">
+                                    <span class="tech-tag">React | TypeScript | TailwindCSS | Vite</span>
+                                </div>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-label"><b>Backend tech stack</b></span> -->
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Node.js | Express.js (built on top)</span>
+                                </div>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-label"><b>AI Tiers</b></span> -->
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Groq's Llama 3.3 70B | OpenAI's GPT-4o-mini</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="project-tech">
-                            <span class="tech-tag"><b>AI Tiers</b></span> -->
-                            <span class="tech-tag">Groq's Llama 3.3 70B</span> |
-                            <span class="tech-tag">OpenAI's GPT-4o-mini</span>
+                        <div class="project-links">
+                            <a href="https://voice-coder-studio.vercel.app/" target="_blank">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo
+                            </a> |
+                            <a href="https://github.com/aryanvx/voice-coder-studio" target="_blank">
+                                <i class="fab fa-github"></i> Source code
+                            </a> |
+                            <a href="case-studies/voicecode-cs.html">
+                                <i class="fa-solid fa-file"></i> Case study
+                            </a>
                         </div>
-                        <br>
-                        <a href="https://voice-coder-studio.vercel.app/" target="_new"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo </a> |
-                        <a href="https://github.com/aryanvx/voice-coder-studio/tree/main" target="_new"><i class="fab fa-github"></i> Source code</a> |
-                        <a href="case-studies/voicecode-cs.html"><i class="fa-solid fa-file"></i> Case study</a>
                     </div>
                 </div>
                 <br>
-                <div class="project-card">
+                <div class="project-card large">
                     <div class="project-image">
-                        <img src="assets/projects/myncrep.png" alt="MyNCRep Project" loading="lazy" style="width: 100%">
+                        <img src="assets/projects/myncrep.png" alt="MyNCRep Project" width="100%" loading="lazy">
                     </div>
                     <br>
                     <div class="card-header">
-                        <h3 class="blog-title"><i class="fa-solid fa-flag-usa"></i><br>MyNCRep</h3>
-                        <span>A civic-information tool built to help North Carolina voters cut through the noise and get the facts that matter. It shows where to vote, what you need, and what each candidate actually stands for. No spin, no party narratives, just information you can use. Created for the Congressional App Challenge by a team of students who realized most new voters don't lack opinions; they lack context. Overcame missing North Carolina polling data in the Voter Information Project (VIP) by implementing fallback logic. Balanced the tradeoff between API-driven data flow and local storage for performance. Designed location features with user privacy and safety as a priority, and established guidelines to ensure all civic data is presented neutrally and verifiably. Planning to expand beyond North Carolina, add real-time legislative updates, build gamified civics learning modules, integrate AI-powered bill summaries, and partner with election boards for verified polling data.</span>
+                        <h3 class="blog-title">
+                            <i class="fa-solid fa-flag-usa"></i><br>
+                            MyNCRep
+                        </h3>
                     </div>
                     <div class="card-content">
-                        <br>
-                        <div class="project-tech">
-                            <span class="tech-tag"><b>Backend</b></span> -->
-                            <span class="tech-tag">Python</span> |
-                            <span class="tech-tag">Poetry (dependency management)</span>
+                        <div class="card-description">
+                            <p>A civic-information tool that helps North Carolina voters cut through the noise and focus on what matters for election day. It shows where to vote, what to bring, and what each candidate stands for, without spin or party narratives. Built for the Congressional App Challenge, it assumes new voters don’t lack opinions, they lack context. Implemented fallback logic for gaps in Voting Information Project data, balanced API calls vs. local caching, and designed privacy-first location features with neutral, verifiable civic data.</p>
                         </div>
-                        <div class="project-tech">
-                            <span class="tech-tag"><b>APIs</b></span> -->
-                            <span class="tech-tag">Google Civics API</span> |
-                            <span class="tech-tag">Vote Smart</span> |
-                            <span class="tech-tag">NC State Board of Elections (NCSBE)</span>
+                        <div class="tech-stack-container">
+                            <div class="project-tech">
+                                <span class="tech-label"><b>Backend tech stack</b></span> -->
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Python | Poetry (dependency management)</span>
+                                </div>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-label"><b>API Providers</b></span> -->
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Google Civics API | Vote Smart | NCBSE</span>
+                                </div>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-label"><b>Mapping + Architecture</b></span> -->
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Leaflet.js | OpenStreetMap | Modular design</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="project-tech">
-                            <span class="tech-tag"><b>Mapping + Architecture</b></span> -->
-                            <span class="tech-tag">Leaflet.js</span> |
-                            <span class="tech-tag">OpenStreetMap</span> |
-                            <span class="tech-tag">Modular design for easy contributor extensions</span>
+                        <div class="project-links">
+                            <a href="https://aryanvx.pythonanywhere.com/" target="_blank">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo
+                            </a> |
+                            <a href="https://github.com/EvanY-74/CAC" target="_blank">
+                                <i class="fab fa-github"></i> Source code
+                            </a> |
+                            <a href="case-studies/myncrep-cs.html">
+                                <i class="fa-solid fa-file"></i> Case study
+                            </a>
                         </div>
-                        <br>
-                        <a href="https://aryanvx.pythonanywhere.com/" target="_new"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo </a> |
-                        <a href="https://github.com/EvanY-74/CAC" target="_new"><i class="fab fa-github"></i> Source code</a> |
-                        <a href="case-studies/myncrep-cs.html"><i class="fa-solid fa-file"></i> Case study</a>
                     </div>
                 </div>
                 <br>
