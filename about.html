@@ -202,36 +202,24 @@
         <script src="script.js"></script>
         <script>
             const username = 'aryanvx';
+            let contributionsData = []; // Store data globally
 
             const contributionColors = {
                 light: {
-                    0: '#ebedf0',  // No contributions
-                    1: '#c6e48b',  // 1-3 contributions
-                    2: '#7bc96f',  // 4-6 contributions
-                    3: '#239a3b',  // 7-9 contributions
-                    4: '#196127'   // 10+ contributions
+                    0: '#ebedf0',  // No contributions - lightest (almost white)
+                    1: '#9ecbff',  // 1-3 contributions - light blue
+                    2: '#6eb5ff',  // 4-6 contributions - medium blue
+                    3: '#3d9eff',  // 7-9 contributions - darker blue
+                    4: '#1e90ff'   // 10+ contributions - darkest blue
                 },
                 dark: {
-                    0: '#161b22',
-                    1: '#0e4429',
-                    2: '#006d32',
-                    3: '#26a641',
-                    4: '#39d353'
+                    0: '#161b22',  // No contributions - dark
+                    1: '#191f64',  // 1-3 contributions
+                    2: '#253896',  // 4-6 contributions
+                    3: '#253896',  // 7-9 contributions
+                    4: '#7dd4ff'   // 10+ contributions - brightest green
                 }
             };
-
-            function renderContributions(data) {
-                const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-                const colors = contributionColors[theme];
-                
-                data.forEach(day => {
-                    const level = getContributionLevel(day.count);
-                    const cell = document.querySelector(`[data-date="${day.date}"]`);
-                    if (cell) {
-                        cell.style.fill = colors[level];
-                    }
-                });
-            }
 
             function getContributionLevel(count) {
                 if (count === 0) return 0;
@@ -241,29 +229,24 @@
                 return 4;
             }
 
-            // Update on theme change
-            document.getElementById('theme-toggle').addEventListener('click', () => {
-                setTimeout(() => {
-                    renderContributions(contributionsData);
-                }, 100);
-            });
+            function getColor(count) {
+                const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+                const colors = contributionColors[theme];
+                const level = getContributionLevel(count);
+                return colors[level];
+            }
 
             async function fetchContributions() {
                 try {
                     const response = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
                     const data = await response.json();
-                    if (data.contributions) renderGraph(data.contributions);
+                    if (data.contributions) {
+                        contributionsData = data.contributions; // Store globally
+                        renderGraph(data.contributions);
+                    }
                 } catch (error) {
                     document.getElementById('graph-content').innerHTML = '<div style="padding: 20px; text-align: center;">Unable to load</div>';
                 }
-            }
-
-            function getColor(count) {
-                if (count === 0) return '#161b22';  // Dark grey/black
-                if (count < 3) return '#191f64';    // Very dark blue
-                if (count < 6) return '#253896';    // Dark blue
-                if (count < 9) return '#1e90ff';    // Main blue
-                return '#7dd4ff';                   // Bright blue
             }
 
             function renderGraph(contributions) {
@@ -277,9 +260,11 @@
                     html += '<div style="display: flex; flex-direction: column; gap: 3px;">';
                     week.forEach(day => {
                         html += `<div style="width: 10px; height: 10px; border-radius: 2px; background-color: ${getColor(day.count)}; cursor: pointer; transition: transform 0.2s;" 
+                                    data-date="${day.date}"
+                                    data-count="${day.count}"
                                     onmouseenter="showTooltip(event, '${day.date}', ${day.count})"
                                     onmouseleave="hideTooltip()"
-                                    onmouseover="this.style.transform='scale(1.3)'; this.style.border='1px solid #7e2bff';"
+                                    onmouseover="this.style.transform='scale(1.3)'; this.style.border='1px solid #1e90ff';"
                                     onmouseout="this.style.transform='scale(1)'; this.style.border='none';"></div>`;
                     });
                     html += '</div>';
@@ -306,6 +291,16 @@
                 document.getElementById('tooltip').style.display = 'none';
             }
 
+            // Update graph colors when theme changes
+            document.getElementById('theme-toggle').addEventListener('click', () => {
+                setTimeout(() => {
+                    if (contributionsData.length > 0) {
+                        renderGraph(contributionsData); // Re-render with new theme colors
+                    }
+                }, 100);
+            });
+
+            // Initial load
             fetchContributions();
         </script>
     </body>
