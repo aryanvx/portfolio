@@ -529,7 +529,7 @@
         const pixelBlast = new PixelBlast(pixelBlastContainer, {
             variant: 'circle',
             pixelSize: 6,
-            color: color,
+            color: '#1e90ff',
             patternScale: 3,
             patternDensity: 1.2,
             pixelSizeJitter: 0.5,
@@ -547,7 +547,7 @@
             themeToggle.addEventListener('click', function() {
             setTimeout(() => {
                 const isDark = document.body.classList.contains('dark-mode');
-                const newColor = isDark ? '#1e90ff' : '#1a1a1a';
+                const newColor = isDark ? '#1e90ff' : '#1e90ff';
                 pixelBlast.uniforms.uColor.value.set(newColor);
             }, 50);
             });

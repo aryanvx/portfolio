@@ -17,7 +17,7 @@
     --card-bg: #fafafa;
     --card-border: #f0f0f0;
     --shadow: rgba(0, 0, 0, 0.1);
-    --accent-color: #1a1a1a;
+    --accent-color: #1e90ff;
     --hover-bg: #f0f0f0;
 }
 
@@ -49,9 +49,18 @@ body {
 .case-study-toggle {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--bg-color);
+    color: var(--accent-color); /* CHANGED: Blue */
+    background-color: transparent;
     font-size: 16px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+}
+
+.case-study-toggle:hover {
+    color: #4169e1;
+    text-decoration: underline;
 }
 
 .container {
@@ -90,8 +99,25 @@ p {
 
 a {
     text-decoration: none;
-    color: inherit;
+    color: var(--accent-color);
     transition: all 0.3s ease;
+}
+
+p a {
+    color: var(--accent-color);
+}
+
+.project-content a,
+.card-content a,
+.contact-method,
+.social-link {
+    color: var(--accent-color);
+}
+
+.project-content a:hover,
+.card-content a:hover {
+    color: #4169e1;
+    text-decoration: underline;
 }
 
 .navbar {
@@ -160,18 +186,15 @@ a {
 }
 
 .nav-link {
-    color: var(--text-secondary);
+    color: var(--accent-color);
     font-weight: 500;
     position: relative;
     padding: 0.5rem 0;
 }
 
-.nav-link:hover {
-    color: var(--text-color);
-}
-
+.nav-link:hover,
 .nav-link.active {
-    color: var(--text-color);
+    color: var(--accent-color);
 }
 
 .nav-link::after {
@@ -181,7 +204,7 @@ a {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--text-color);
+    background-color: var(--accent-color);
     transition: width 0.3s ease;
 }
 
@@ -319,14 +342,14 @@ a {
     display: flex;
     align-items: center;
     gap: 5px;
-    color: var(--text-secondary);
+    color: var(--accent-color);
     padding: 0.5rem;
     border-radius: 6px;
     transition: all 0.3s ease;
 }
 
 .social-link:hover {
-    color: var(--accent-color);
+    color: #4169e1;
     background-color: var(--hover-bg);
 }
 
@@ -422,13 +445,13 @@ a {
     padding: 1rem 1.5rem;
     background: var(--bg-color);
     border-radius: 8px;
-    color: var(--text-secondary);
+    color: var(--accent-color);
     transition: all 0.3s ease;
     border: 1px solid var(--card-border);
 }
 
 .contact-method:hover {
-    color: var(--accent-color);
+    color: #4169e1;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px var(--shadow);
 }
@@ -439,15 +462,23 @@ a {
 
 .footer {
     background-color: var(--text-color);
-    color: var(--bg-color);
+    color: #ffffff;
     text-align: center;
     padding: 2rem 0;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer p {
-    color: var(--bg-color);
+    color: #1a1a1a;
     margin: 0;
+}
+
+body.dark-mode .footer {
+    background-color: #161b22;
+    color: #c9d1d9;
+}
+
+body.dark-mode .footer p {
+    color: #c9d1d9;
 }
 
 @media screen and (max-width: 768px) {
@@ -603,7 +634,7 @@ button:focus {
 .nav-link:hover,
 .nav-link.active,
 .nav-logo a:hover {
-    color: var(--text-color);
+    color: var(--accent-color);
 }
 
 .navbar.scrolled {
@@ -646,7 +677,7 @@ body.dark-mode a {
 
 body.dark-mode a:hover,
 body.dark-mode a:focus {
-    color: #fff;
+    color: #4169e1;
 }
 
 body.dark-mode .btn-primary {
@@ -673,11 +704,6 @@ body.dark-mode .nav-logo a:hover {
 
 body.dark-mode .bar {
     background-color: #c9d1d9;
-}
-
-body.dark-mode .footer {
-    background-color: #21262d;
-    color: #c9d1d9;
 }
 
 body.dark-mode .project-card,
@@ -750,8 +776,8 @@ body {
 }
 
 .footer {
-  background-color: var(--text-color);
-  color: var(--bg-color);
+  background-color: #ffffff;
+  color: #1a1a1a;
   text-align: center;
   padding: 20px 0;
   box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
@@ -816,7 +842,7 @@ body {
 }
 
 body:not(.dark-mode) .electric-border-wrapper {
-  --electric-border-color: #1a1a1a;
+  --electric-border-color: #1e90ff;
 }
 
 .eb-svg {
