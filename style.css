@@ -1039,24 +1039,19 @@ body.dark-mode .hero-content {
 .text-type--color-1 { color: var(--accent-color); }
 .text-type--color-2 { color: #1e90ff; }
 
-/* Tech Stack Alignment Fix - Add to your style.css */
-
-/* Create a two-column layout for large project cards */
 .project-card .card-content {
   display: grid;
-  grid-template-columns: 1fr 350px; /* Description on left, tech stack on right */
+  grid-template-columns: 1fr 350px;
   gap: 2rem;
   align-items: start;
 }
 
-/* Tech stack container - keeps it aligned */
 .tech-stack-container {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-/* Individual tech rows */
 .project-tech {
   display: flex;
   flex-wrap: wrap;
@@ -1065,27 +1060,396 @@ body.dark-mode .hero-content {
   font-size: 0.9rem;
 }
 
-/* Tech stack labels (Frontend, Backend, etc.) */
 .project-tech .tech-tag:first-child {
-  min-width: 100px; /* Ensures labels are aligned */
+  min-width: 100px;
   font-weight: 100;
 }
 
-/* Make links section span full width */
 .project-links {
-  grid-column: 1 / -1; /* Spans both columns */
+  grid-column: 1 / -1;
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border-color);
 }
 
-/* Responsive: Stack on smaller screens */
 @media screen and (max-width: 968px) {
   .project-card .card-content {
-    grid-template-columns: 1fr; /* Single column on mobile */
+    grid-template-columns: 1fr;
   }
   
   .project-links {
     grid-column: 1;
   }
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+@media screen and (max-width: 968px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .about-image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .profile-wrapper {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+    }
+    
+    .about-info {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .about-info h2 {
+        text-align: center;
+    }
+    
+    .social-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .about-text {
+        text-align: left;
+        padding: 0 1rem;
+    }
+    
+    .about-text h1 {
+        text-align: center;
+    }
+    
+    .about-description p {
+        font-size: 1rem;
+        line-height: 1.7;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile-wrapper {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .about-text {
+        padding: 0 0.5rem;
+    }
+    
+    .about-description p {
+        font-size: 0.95rem;
+    }
+}
+
+.github-graph-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    overflow: hidden;
+}
+
+#graph-content {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Custom scrollbar for graph */
+#graph-content::-webkit-scrollbar {
+    height: 6px;
+}
+
+#graph-content::-webkit-scrollbar-track {
+    background: var(--hover-bg);
+    border-radius: 3px;
+}
+
+#graph-content::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 3px;
+}
+
+#graph-content::-webkit-scrollbar-thumb:hover {
+    background: #4169e1;
+}
+
+@media screen and (max-width: 968px) {
+    .github-graph-container {
+        padding: 12px;
+        margin-top: 15px;
+    }
+    
+    .github-graph-header {
+        font-size: 13px !important;
+    }
+    
+    #graph-content > div {
+        min-width: max-content;
+    }
+    
+    .github-graph-container > div:last-child {
+        font-size: 10px !important;
+        margin-top: 8px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .github-graph-container {
+        padding: 10px;
+        margin-top: 12px;
+    }
+    
+    #graph-content div[style*="width: 10px"] {
+        width: 8px !important;
+        height: 8px !important;
+    }
+    
+    .github-graph-header {
+        font-size: 12px !important;
+    }
+}
+
+p, span, div, h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+a {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.about-description p {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .page-content {
+        padding-top: 80px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+}
+
+@media screen and (max-width: 968px) {
+    .social-links {
+        gap: 0.8rem;
+        margin: 1rem 0;
+    }
+    
+    .social-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .social-link i {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .social-links {
+        gap: 0.5rem;
+        flex-direction: row;
+    }
+    
+    .social-link {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .page-header p {
+        font-size: 1rem;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #tooltip {
+        font-size: 10px !important;
+        padding: 5px 8px !important;
+        max-width: 200px;
+        white-space: normal !important;
+    }
+}
+
+@media screen and (max-width: 968px) {
+    .github-graph-container::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 100%;
+        background: linear-gradient(to left, var(--card-bg), transparent);
+        pointer-events: none;
+        opacity: 0.7;
+    }
+}
+
+@media screen and (max-width: 968px) {
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    .about-content,
+    .container {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+    
+    * {
+        max-width: 100%;
+    }
+    
+    #graph-content,
+    #graph-content * {
+        max-width: none;
+    }
+}
+
+.github-graph-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+#graph-content {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) var(--hover-bg);
+}
+
+/* Visible scrollbar for mobile */
+#graph-content::-webkit-scrollbar {
+    height: 8px;
+}
+
+#graph-content::-webkit-scrollbar-track {
+    background: var(--hover-bg);
+    border-radius: 4px;
+}
+
+#graph-content::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+#graph-content::-webkit-scrollbar-thumb:hover {
+    background: #4169e1;
+}
+
+/* Mobile-specific fixes */
+@media screen and (max-width: 968px) {
+    .about-image {
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    .github-graph-container {
+        padding: 12px;
+        margin-top: 15px;
+        max-width: 100%;
+    }
+    
+    .github-graph-header {
+        font-size: 13px !important;
+    }
+    
+    #graph-content {
+        max-width: 100%;
+    }
+    
+    #graph-content > div {
+        min-width: max-content;
+    }
+    
+    /* Make scrollbar more visible on mobile */
+    #graph-content::-webkit-scrollbar {
+        height: 10px;
+    }
+    
+    .github-graph-container > div:last-child {
+        font-size: 10px !important;
+        margin-top: 8px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .github-graph-container {
+        padding: 10px;
+        margin-top: 12px;
+    }
+    
+    #graph-content div[style*="width: 10px"] {
+        width: 8px !important;
+        height: 8px !important;
+    }
+    
+    .github-graph-header {
+        font-size: 12px !important;
+    }
+}
+
+/* Ensure about-info doesn't overflow */
+@media screen and (max-width: 968px) {
+    .about-info {
+        max-width: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+    
+    .about-content {
+        max-width: 100%;
+        overflow: hidden;
+    }
 }
