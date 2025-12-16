@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/png" href="../assets/aryanlogo.png" />
+        <meta name="description" content="Personal blogs and reflections by Aryan Vyahalkar." />
+        <meta name="keywords" content="blog, Aryan Vyahalkar, thoughts, student, developer" />
+        <meta name="author" content="Aryan Vyahalkar" />
+        <title>Sutra | Case Study</title>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
+
+        <!-- Font Awesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+        <!-- Main stylesheet -->
+        <link rel="stylesheet" href="../style.css" />
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="../index.html"><img src="../assets/aryanlogo.png" alt="AV logo" style="width:55px;height:55px; vertical-align: middle;"></a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="../projects.html" class="nav-link active">Projects</a></li>
+                    <li class="nav-item"><a href="../about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="../blogs.html" class="nav-link">Blogs</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <!-- Title Section -->
+        <main class="container">
+            <section>
+                <h1 id="type">
+                    <br>
+                    <br>
+                    Sutra Case Study
+                </h1>
+                <hr>
+                <br>
+            </section>
+            <section>
+                <h3>
+                    Context
+                </h3>
+                <p>
+                    Sorry to say but there's not much of a story with this one.
+                    <br>
+                    <br>
+                    I built it purely to get familiar with Swift, iOS development, and Xcode before attempting building an actual app for the <a href="https://developer.apple.com/swift-student-challenge/" target="_blank">Apple Swift Student Challenge</a>. At the same time, I was processing the move from the US to India, so I figured why not make something that kinda-sorta helped with that?
+                </p>
+                <h3>
+                    Approach
+                </h3>
+                <!-- No I'm not lazy by not using an unordered list -->
+                <p>
+                    A SwiftUI frontend: three narrative threads that guided users through cultural identity, language, and memory. Each view was self-contained using:
+                    <br>
+                    • Ripple animations for Marathi words
+                    <br>
+                    • An interactive matching game for translations
+                    <br>
+                    • A memory web builder
+                    <br>
+                    <br>
+                    AVFoundation handled text-to-speech for pronunciation, CoreHaptics added tactile feedback, and custom animations brought warmth to the experience. The entire project was a learning exercise, which means no backend complexity, no external APIs, just a native iOS app designed to feel personal and intentional while teaching me the fundamentals of Swift development.
+                </p>
+            </section>
+        </main>
+        <br>
+        <!-- Footer -->
+        <footer class="footer" style="margin-top: auto;">
+            <div class="container">
+                <p>&copy; 2025 Aryan Vyahalkar. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="../script.js"></script>
+    </body>
+</html>
