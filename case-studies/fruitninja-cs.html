@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/png" href="../assets/aryanlogo.png" />
+        <meta name="description" content="Personal blogs and reflections by Aryan Vyahalkar." />
+        <meta name="keywords" content="blog, Aryan Vyahalkar, thoughts, student, developer" />
+        <meta name="author" content="Aryan Vyahalkar" />
+        <title>Fruit Ninja (ML v.) | Case Study</title>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
+
+        <!-- Font Awesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+        <!-- Main stylesheet -->
+        <link rel="stylesheet" href="../style.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+        
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="../index.html"><img src="../assets/aryanlogo.png" alt="AV logo" style="width:55px;height:55px; vertical-align: middle;"></a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="../projects.html" class="nav-link active">Projects</a></li>
+                    <li class="nav-item"><a href="../bout.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="../blogs.html" class="nav-link">Blogs</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <!-- Title Section -->
+        <main class="container">
+            <section>
+                <h1 id="type">
+                    <br>
+                    <br>
+                    Fruit Ninja (Computer Vision v.) Case Study
+                </h1>
+                <hr>
+                <br>
+            </section>
+            <section>
+                <p>
+                    this was the project that finally made all the “probability & statistics + linear algebra + stochastic calculus" (hmu if you want the whole <a href="https://obsidian.md/">Obsidian</a> note i used) stuff click together into something cool. after doing this, i am DEFINITELY gonna be dabbling some more in computer vision & ML.
+                    <br>
+                    <br>
+                    it was also my first project where it wasn't tight. no immediate feedback, no build step, no deployment. it was just change code, run, see it work (or not), repeat.
+                <h3>
+                    Context
+                </h3>
+                <p>    
+                    this project started as a basic hand-tracking tool: MediaPipe + OpenCV + PyAutoGUI to move the cursor w/ my index finger & use a pinch as a left-click. that alone was cool, but you know me. gotta gamify it.
+                    <br>
+                    <br>
+                    so i booted up <a href="https://www.perplexity.ai/" target="_blank">Perplexity</a> and asked it for "simple game ideas using hand tracking." it suggested this Fruit Ninja clone, which sounded ok (i just chose it cause the rest of the ideas were trash). so i set out to build it.
+                </p>
+                <h3>
+                    Approach
+                </h3>
+                <p>
+                    webcam capture w/ <code>cv2.VideoCapture</code>, MediaPipe’s HandLandmarker for 3D hand landmarks, & OpenCV for all rendering, text, & collision visualization. all inside a single loop.
+                    <br>
+                    <br>
+                    btw the “blade” is just a trail of recent index finger positions stored in a list & rendered as a line across frames. the sole reason i included it was because i needed the reassurance that it was actually detecting my finger movement, since there’s no physical controller (first time ok).
+                    <br>
+                    <br>
+                    slicing is a distance check b/w those trail points & each fruit’s center; when within radius, the fruit marks itself sliced & switches to a split animation.
+​                    <br>
+                    <br>
+                    game state lives in a few scalars + lists:
+                </p>
+                <ul>
+                    <li>fruits</li>
+                    <li>score</li>
+                    <li>lives</li>
+                    <li>paused</li>
+                    <li>spawn_timer</li>
+                </ul>
+                    <br>
+                <p>
+                    fruits spawn w/ randomized \( x \), initial upward velocity, & i'm not god, but i tried my best to replicate gravity. then the computer updates each frame until they’re sliced or fall off-screen. and lastly, a thumb–index pinch, detected via landmark distance threshold, toggles pause / play.
+                </p>
+                <h3>
+                    The Math
+                </h3>
+                <p>
+                    under the hood this project is basically: take 3D hand landmarks, convert to 2D pixel coordinates, then use Euclidean geometry for the rest.
+                    <br>
+                    <br>
+                    MediaPipe gives each hand as 21 landmarks w/ \( (x, y, z) \) where \(x, y\) are normalized to \([0, 1]\) in img coords & \(z\) is the relative depth value.
+                    <br>
+                    <br>
+                    to actually get a fingertip in pixels, you do:
+                    <br>
+                    <br>
+                    \( x_{px}= landmark.x × frame\)_\(width \)
+                    <br>
+                    \( y_{px}= landmark.y × frame\)_\(height \)
+                    <br>
+                    <br>
+                    once you have that, you need to detect pinching. the way i did it was simple distance thresholding b/w the thumb tip (landmark 4) & index tip (landmark 8) in normalized landmark space:
+                    <br>
+                    <br>
+                    in essence, you're computing the 3D Euclidean distance:
+                    <br>
+                    <br>
+                    \( d = \sqrt{(x_4 - x_8)^2 + (y_4 - y_8)^2 + (z_4 - z_8)^2} \) and treating pinch as when \( d < 0.05 \).
+                    <br>
+                    <br>
+                    conceptually, landmarks closer together in camera space = a smaller \( d \).
+                    <br>
+                    <br>
+                    now the fruit itself. each fruit is a point mass w/ basic kinematics in 2D. & it has, really 2 components:
+                    <br>
+                    1. position: \( (x, y) \)
+                    <br>
+                    2. velocity: \( (v_x, v_y) \)
+                    <br>
+                    <br>
+                    and then you just update each frame:
+                    <br>
+                    \( v_y \) <-- \( v_y + g \) (gravity term, here \( g = 0.5 \) pixels/frame²)
+                    <br>
+                    \( x \) <-- \( x + v_x \)
+                    <br>
+                    \( y \) <-- \( y + v_y \)
+                    <br>
+                    <br>
+                    so they follow discrete parabolic arcs until sliced or off-screen (bottom). and the off-screen check is just if \( y > frame\)_\(height + margin\).
+                    <br>
+                    <br>
+                    lastly, slicing detection. each fruit is treated as basically a filled circle w/ a center \( (f_x, f_y) \) & radius \( r \). the slicing test is a point-circle distance b/w each trail point \( (x_i, y_i) \) & fruit center:
+                    <br>
+                    <br>
+                    \( d = \sqrt{(x_i - x_f)^2 + (y_i - y_f)^2} \)
+                    <br>
+                    <br>
+                    if any point in the recent trail has \( d < r \), the fruit is counted as sliced.
+                    <br>
+                    <br>
+                    and that’s basically it! the whole game is essentially a loop over time where you repeatedly (1) map normalized landmark coordinates to pixels, (2) update fruit state w/ simple kinematics, & (3) apply distance-based tests for both gestures (pinch) + slicing (trail vs circle) in a consistent 2D coordinate frame.
+                </p>
+                <h3>
+                    Outcome
+                </h3>
+                <p>
+                    this project was like scratching an itch i didn't know was there. web dev is fun & all, but actually seeing code translate to real-time physical interaction? mind-blowing for a dev who's only seen like MERN.
+                    <br>
+                    <br>
+                    anyways, now i have a basic hand-tracking framework set up in Python that i can build on for future CV/ML projects.
+                    <br>
+                    <br>
+                    next up: maybe some gesture recognition, or even a full-on sign language interpreter. who knows. hit me up maybe we can collab.
+                </p>
+            </section>
+        </main>
+        <br>
+        <!-- Footer -->
+        <footer class="footer" style="margin-top: auto;">
+            <div class="container">
+                <p>&copy; 2025 Aryan Vyahalkar. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="../script.js"></script>
+    </body>
+</html>
