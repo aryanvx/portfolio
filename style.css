@@ -1369,7 +1369,6 @@ a {
     scrollbar-color: var(--accent-color) var(--hover-bg);
 }
 
-/* Visible scrollbar for mobile */
 #graph-content::-webkit-scrollbar {
     height: 8px;
 }
@@ -1388,7 +1387,6 @@ a {
     background: #4169e1;
 }
 
-/* Mobile-specific fixes */
 @media screen and (max-width: 968px) {
     .about-image {
         max-width: 100%;
@@ -1413,7 +1411,6 @@ a {
         min-width: max-content;
     }
     
-    /* Make scrollbar more visible on mobile */
     #graph-content::-webkit-scrollbar {
         height: 10px;
     }
@@ -1440,7 +1437,6 @@ a {
     }
 }
 
-/* Ensure about-info doesn't overflow */
 @media screen and (max-width: 968px) {
     .about-info {
         max-width: 100%;
