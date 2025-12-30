@@ -809,18 +809,17 @@
                 heroTitle.classList.add('has-decrypt');
                 
                 const decryptedText = new DecryptedText(heroTitle, {
-                speed: 150,                   // Speed of animation (ms per iteration)
-                maxIterations: 20,            // How many times to scramble (for non-sequential)
-                sequential: true,             // Reveal one character at a time
-                revealDirection: 'start',     // 'start', 'end', or 'center'
-                useOriginalCharsOnly: false,  // Use random chars or only chars from your name
+                speed: 150,                          // in ms per iteration
+                maxIterations: 20,
+                sequential: true,
+                revealDirection: 'start',
+                useOriginalCharsOnly: false,
                 characters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+',
-                animateOn: 'both',            // 'hover', 'view', or 'both'
+                animateOn: 'view',
                 encryptedClass: 'encrypted-char',
                 revealedClass: 'revealed-char'
                 });
 
-                // Store reference for cleanup if needed
                 window.decryptedTextInstance = decryptedText;
             }
             });
